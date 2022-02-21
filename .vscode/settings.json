@@ -1,0 +1,11 @@
+{
+    "i18n-ally.localesPaths": [
+        "lang"
+    ],
+    "editor.formatOnSave": false,
+    "vetur.validation.template": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "i18n-ally.keystyle": "nested",
+}

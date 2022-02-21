@@ -1,0 +1,48 @@
+html {
+    font-size: clamp(16px, 1vw, 26px);
+    @apply overflow-x-hidden overflow-y-auto;
+    @apply w-full;
+    body {
+        @apply min-h-screen bg-white antialiased w-full;
+    }
+}
+
+/* FOCUS STYLES */
+button,
+a {
+    @apply outline-none focus-visible:ring;
+}
+
+input,
+textarea {
+    @apply appearance-none;
+    @apply outline-none focus-visible:ring;
+}
+// ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+//     @apply text-blue-400 opacity-50;
+// }
+
+/* RESET */
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #1e63ad;
+    -webkit-box-shadow: 0 0 0px 1000px #f5f9ff inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+

@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "regions": ["cdg"],
+    "alias": [],
+    "env": {},
+    "build": {
+      "env": {}
+    },
+    "builds": [
+      {
+        "src": "nuxt.config.js",
+        "use": "@nuxtjs/vercel-builder",
+        "config": {
+          "serverFiles": [
+            "lang/**",
+            "tailwind.config.js",
+            "./.nuxt/views/error.html"
+          ]
+        }
+      }
+    ]
+  }

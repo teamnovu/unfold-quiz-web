@@ -1,0 +1,24 @@
+
+
+@tailwind base;
+@tailwind components;
+
+@import "_base";
+@import "_transitions";
+@import "_typography";
+
+// @layer components {
+//     //   @import "_fonts";
+//     //   @import "_buttons";
+// }
+
+// @layer utilities {
+
+
+// //   @variants responsive {
+// //     @import "_utilities";
+// //   }
+// }
+
+@tailwind utilities;
+
