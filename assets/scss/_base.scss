@@ -1,9 +1,8 @@
 html {
     font-size: clamp(16px, 1vw, 26px);
-    @apply overflow-x-hidden overflow-y-auto;
-    @apply w-full;
+    @apply overflow-x-hidden overflow-y-auto w-full;
     body {
-        @apply min-h-screen bg-white antialiased w-full;
+        @apply min-h-screen bg-black antialiased w-full text-white font-sans;
     }
 }
 
@@ -18,11 +17,6 @@ textarea {
     @apply appearance-none;
     @apply outline-none focus-visible:ring;
 }
-// ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-//     @apply text-blue-400 opacity-50;
-// }
-
-/* RESET */
 
 *,
 *:before,

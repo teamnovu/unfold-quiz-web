@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './components/**/*.{js,vue,ts}',
@@ -7,7 +9,28 @@ module.exports = {
     './nuxt.config.{js,ts}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: ['neuzeit-grotesk', ...defaultTheme.fontFamily.sans]
+      },
+      colors: {
+        custom: {
+          gold: '#D5C283',
+          'light-gold': '#EBDFB7',
+          gray: '#F1EFEA'
+        }
+      },
+      lineHeight: {
+        15: '3.75rem'
+      },
+      borderWidth: {
+        6: '6px'
+      },
+      screens: {
+        xs: '408px'
+      }
+
+    }
   },
-  plugins: []
+  plugins: [require('autoprefixer')]
 }

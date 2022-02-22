@@ -1,72 +1,16 @@
 // GENERAL TYPOGRAPHY
-@layer components {
-	@variants responsive {
+@layer utilities {
 
-        // TEXT
-        .typo-text-300 {
-            @apply font-outfit font-light leading-6 text-lg;
-            @apply sm:text-xl;
-        }
+    // TEXT
+    .typo-400 {
+        @apply text-base leading-5;
+        @apply sm:leading-9 sm:text-3xl ;
+    }
 
-        // TITLE
-		.typo-title-400 {
-            @apply font-outfit font-semibold leading-6 tracking-tighter text-lg;
-            @apply sm:text-2xl;
-		}
-		.typo-title-600 {
-            @apply font-outfit font-semibold leading-6 tracking-tighter text-2xl;
-            @apply sm:text-4xl;
-		}
-		.typo-title-800 {
-            @apply font-outfit font-semibold leading-5 tracking-tighter text-3xl;
-            @apply sm:text-5xl sm:tracking-tight;
-            @apply lg:text-6xl;
-		}
-	}
+    .typo-600 {
+        @apply text-2xl leading-8;
+        @apply sm:leading-15 sm:text-6xl;
+    }
+
 }
-
-.flow-text {
-    h2 {
-        @apply typo-title-600 ;
-    }
-    h2 {
-        @apply typo-title-400;
-    }
-    ul {
-      @apply mb-6;
-      list-style-type: none;
-      li {
-        @apply relative pl-6 mb-1 sm:mb-2;
-        &::before {
-          @apply absolute top-0 left-0;
-          content: "\25CF";
-        }
-      }
-      p {
-        @apply mb-0;
-      }
-    }
-    ol {
-        @apply mb-6;
-        list-style: none;
-        counter-reset: my-awesome-counter;
-        li {
-            @apply relative pl-6 mb-1 sm:mb-2;
-            counter-increment: my-awesome-counter;
-            &::before {
-                @apply block absolute top-0 left-0 px-px ;
-                content: counter(my-awesome-counter) ")";
-            }
-            p {
-                @apply mb-0;
-            }
-        }
-    }
-    p {
-        @apply mb-6;
-    }
-    a {
-      @apply text-blue-custom visited:text-blue-custom-old hover:text-blue-custom-old transition-colors ease-in-out;
-    }
-  }
 
