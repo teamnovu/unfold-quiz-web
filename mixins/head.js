@@ -8,7 +8,7 @@ export default {
       meta: [
         {
           property: 'og:url',
-          content: process.env.baseUrl + page.url
+          content: process.env.appUrl + page.url
         },
         {
           property: 'og:type',

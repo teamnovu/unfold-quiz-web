@@ -64,6 +64,6 @@ export default {
     }
   },
   env: {
-    baseUrl: process.env.APP_URL || 'http://localhost:3000'
+    appUrl: process.env.APP_URL || 'http://localhost:3000'
   }
 }
