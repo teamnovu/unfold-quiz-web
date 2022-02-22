@@ -12,7 +12,6 @@
         "use": "@nuxtjs/vercel-builder",
         "config": {
           "serverFiles": [
-            "lang/**",
             "tailwind.config.js",
             "./.nuxt/views/error.html"
           ]
