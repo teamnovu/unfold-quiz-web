@@ -1,0 +1,47 @@
+<template>
+  <div class="flex flex-col justify-center overflow-hidden">
+    <!-- TITLE & TEXT -->
+    <div class="mb-14 px-9 sm:pl-28 sm:pr-40">
+      <h1
+        class="mb-28 text-xl font-bold text-custom-light-gold sm:mb-10 sm:text-4xl"
+      >
+        novu Quiz
+      </h1>
+      <div
+        class="col-span-1 mb-20 grid gap-5 sm:gap-10 lg:grid-cols-3 lg:gap-36"
+      >
+        <h2 class="typo-600 pr-[10vw] lg:col-span-2">
+          {{ home.main_title }}
+        </h2>
+        <!-- START BUTTON -->
+        <button class="flex items-center space-x-5 lg:justify-end">
+          <span class="typo-400 text-2xl text-custom-light-gold sm:text-4xl"
+            >Jetzt starten</span
+          >
+          <div
+            class="relative h-10 w-10 shrink-0 rounded-full bg-custom-light-gold sm:h-20 sm:w-20"
+          >
+            <ArrowIcon
+              class="absolute left-1/2 top-1/2 w-4 -translate-x-1/2 -translate-y-1/2 text-black sm:w-8"
+            />
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- IMPRINT -->
+    <div class="absolute bottom-16 -left-24 sm:-left-48">
+      <Imprint />
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  computed: {
+    home() {
+      return this.$store.getters.home
+    },
+  },
+}
+</script>

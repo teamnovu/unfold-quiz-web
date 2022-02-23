@@ -1,5 +1,6 @@
 export const state = () => ({
-  page: {}
+  page: {},
+  user: {}
 })
 
 export const actions = {
