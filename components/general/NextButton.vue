@@ -1,7 +1,6 @@
 <template>
   <button
-    class="mt-16 flex items-center space-x-5 lg:justify-end"
-    @click="$store.commit('SET_INDEX', 1)"
+    class="mt-16 flex items-center space-x-5 rounded-full p-1 lg:justify-end"
   >
     <span class="typo-400 text-custom-gold-light">
       <slot />
@@ -15,7 +14,3 @@
     </div>
   </button>
 </template>
-
-<script>
-export default {}
-</script>

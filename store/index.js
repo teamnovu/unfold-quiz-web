@@ -1,5 +1,5 @@
 export const state = () => ({
-  index: 0,
+  index: 2,
   page: {},
   user: {
     firstname: '',
@@ -30,6 +30,7 @@ export const mutations = {
     state.page = page || {}
   },
   SET_INDEX(state, index) {
+    console.log(index)
     state.index = index
   },
   SET_USER(state, user) {

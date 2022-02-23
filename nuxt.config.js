@@ -31,6 +31,7 @@ export default {
     '~/components/general',
     '~/components/icons',
     '~/components/pages',
+    '~/components/questions',
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
