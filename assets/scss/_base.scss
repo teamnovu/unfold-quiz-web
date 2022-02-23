@@ -2,20 +2,20 @@ html {
     font-size: clamp(16px, 1vw, 26px);
     @apply overflow-x-hidden overflow-y-auto w-full;
     body {
-        @apply min-h-screen bg-black antialiased w-full text-white font-sans;
+        @apply min-h-screen bg-black antialiased w-full text-white font-sans ;
     }
 }
 
 /* FOCUS STYLES */
 button,
 a {
-    @apply outline-none focus-visible:ring;
+    @apply outline-none focus-visible:ring ring-custom-gold-light;
 }
 
 input,
 textarea {
     @apply appearance-none;
-    @apply outline-none focus-visible:ring;
+    @apply outline-none focus-visible:ring ring-custom-gold-light;
 }
 
 *,
@@ -35,8 +35,8 @@ input:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-    -webkit-text-fill-color: #1e63ad;
-    -webkit-box-shadow: 0 0 0px 1000px #f5f9ff inset;
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.15) inset;
     transition: background-color 5000s ease-in-out 0s;
 }
 
