@@ -10,6 +10,7 @@
       >
         <div class="relative aspect-9/10 border-2 border-custom-gold-light">
           <img
+            loading="lazy"
             :src="radioButton.image.permalink"
             class="h-full w-full object-cover"
           />
@@ -46,7 +47,6 @@ export default {
   },
 
   mounted() {
-    console.log(this.data)
     if (!this.data.radio_buttons) return
     this.data.radio_buttons.forEach((radioButton) => {
       this.radioButtons.push({

@@ -6,7 +6,7 @@
       <input
         v-model="checked"
         type="checkbox"
-        class="relative z-0 h-6 w-6 min-w-[1.5rem] cursor-pointer rounded-full bg-transparent outline-none ring-offset-2 ring-offset-black focus:ring sm:h-7 sm:w-7 sm:min-w-[1.75rem] sm:ring-offset-4"
+        class="relative z-0 h-6 w-6 min-w-[1.5rem] cursor-pointer rounded-full bg-transparent outline-none ring-offset-2 ring-offset-custom-gray-darker focus:ring sm:h-7 sm:w-7 sm:min-w-[1.75rem] sm:ring-offset-4"
         :value="radioValue"
         @change="onChange"
       />

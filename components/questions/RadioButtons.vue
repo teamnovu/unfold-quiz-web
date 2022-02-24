@@ -5,7 +5,7 @@
         v-for="(radioButton, index) in radioButtons"
         :key="index"
         :value="radioButton.checked"
-        class="h-16 rounded-full bg-white bg-opacity-15 px-6 py-4 sm:h-20"
+        class="min-h-[4rem] rounded-full bg-white bg-opacity-15 px-6 py-4 sm:min-h-[5rem]"
         @input="onInput(index)"
       >
         {{ radioButton.answer }}
