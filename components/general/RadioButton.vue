@@ -56,6 +56,12 @@ export default {
     },
   },
 
+  watch: {
+    value(newValue) {
+      this.checkedProxy = newValue
+    },
+  },
+
   methods: {
     onChange(e) {
       this.$emit('input', this.checkedProxy)

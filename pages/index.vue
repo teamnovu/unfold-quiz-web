@@ -15,6 +15,7 @@
               v-if="isVisible(index)"
               :key="index"
               :data="question"
+              :question-index="index"
             >
               {{ question.type }}
             </Component>

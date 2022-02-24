@@ -1,5 +1,5 @@
 export const state = () => ({
-  index: 0,
+  index: 2,
   page: {},
   user: {
     firstname: '',
