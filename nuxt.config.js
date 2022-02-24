@@ -1,3 +1,5 @@
+const path = require('path')
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -33,6 +35,12 @@ export default {
     '~/components/pages',
     '~/components/questions',
   ],
+  // Ignore file 'nuxt.config.js' from being watched for changes in development
+  watchers: {
+    webpack: {
+      ignored: [path.posix.resolve(__dirname, './.eslintcache')],
+    },
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
