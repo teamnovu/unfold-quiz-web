@@ -8,7 +8,7 @@
       :placeholder="name"
     />
     <label
-      class="pointer-events-none absolute top-1 left-9 text-xs text-custom-gray-dark transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs sm:text-base peer-placeholder-shown:sm:text-2xl peer-focus:sm:text-base"
+      class="pointer-events-none absolute top-1 left-9 text-xs text-custom-gray-dark transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs sm:text-base peer-placeholder-shown:sm:text-2xl peer-focus:sm:text-base"
       :for="name"
     >
       {{ name }}
