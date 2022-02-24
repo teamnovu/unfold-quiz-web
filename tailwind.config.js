@@ -20,6 +20,12 @@ module.exports = {
           gray: '#F1EFEA',
           'gray-dark': '#707070',
         },
+        gold: {
+          100: '#FFFDF5',
+          200: '#F1EFEA',
+          600: '#EBDFB7',
+          700: '#D5C283',
+        },
       },
       lineHeight: {
         15: '3.75rem',

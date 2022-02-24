@@ -7,7 +7,7 @@
       <Register v-else-if="pageIndex === 1" key="1" />
 
       <!-- QUESTIONS LOOP -->
-      <div v-else-if="pageIndex > 1 && pageIndex < questions.length">
+      <div v-else-if="pageIndex > 1 && pageIndex < questions.length + 2">
         <div v-for="(question, index) in questions" :key="index">
           <transition name="slide-right-in" mode="out-in">
             <Component
@@ -23,6 +23,11 @@
       </div>
 
       <!-- COMPLETION -->
+      <div v-else-if="pageIndex > questions.length + 2">
+        <transition name="slide-right-in" mode="out-in">
+          <Solutions />
+        </transition>
+      </div>
     </transition>
   </div>
 </template>
