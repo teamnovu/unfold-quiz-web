@@ -19,6 +19,7 @@ module.exports = {
           'gold-light': '#EBDFB7',
           gray: '#F1EFEA',
           'gray-dark': '#707070',
+          'gray-darker': '#2b2b2b',
         },
         gold: {
           100: '#FFFDF5',
@@ -38,6 +39,9 @@ module.exports = {
       },
       opacity: {
         15: '.15',
+      },
+      aspectRatio: {
+        '9/10': '9 / 10',
       },
     },
   },

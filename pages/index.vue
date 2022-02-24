@@ -8,18 +8,19 @@
 
       <!-- QUESTIONS LOOP -->
       <div v-else-if="pageIndex > 1 && pageIndex < questions.length + 2">
-        <div v-for="(question, index) in questions" :key="index">
-          <transition name="slide-right-in" mode="out-in">
+        <transition name="slide-right-in" mode="out-in">
+          <template v-for="(question, index) in questions">
             <Component
               :is="question.type.replace(/_/g, '-')"
               v-if="isVisible(index)"
               :key="index"
               :data="question"
+              :question-index="index"
             >
               {{ question.type }}
             </Component>
-          </transition>
-        </div>
+          </template>
+        </transition>
       </div>
 
       <!-- COMPLETION -->

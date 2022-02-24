@@ -1,15 +1,26 @@
 <template>
   <QuestionContainer :data="data">
-    <div class="grid gap-3 sm:gap-5">
-      <RadioButton
-        v-for="(radioButton, index) in radioButtons"
-        :key="index"
-        :value="radioButton.checked"
-        class="min-h-[4rem] rounded-full bg-white bg-opacity-15 px-6 py-4 sm:min-h-[5rem]"
-        @input="onInput(index)"
-      >
-        {{ radioButton.answer }}
-      </RadioButton>
+    <div class="grid grid-cols-2 gap-3 sm:gap-14">
+      <div v-for="(radioButton, index) in radioButtons" :key="index">
+        <RadioButton
+          :value="radioButton.checked"
+          class="min-h-[4rem] rounded-full py-4 sm:min-h-[5rem]"
+          @input="onInput(index)"
+        >
+          {{ radioButton.answer }}
+        </RadioButton>
+        <div
+          class="relative cursor-pointer transition-all"
+          :class="{ 'ring-4 ring-custom-gold-light': radioButton.checked }"
+          @click="onInput(index)"
+        >
+          <img
+            loading="lazy"
+            :src="radioButton.image.permalink"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
     </div>
   </QuestionContainer>
 </template>
@@ -39,6 +50,7 @@ export default {
     this.data.radio_buttons.forEach((radioButton) => {
       this.radioButtons.push({
         answer: radioButton.answer,
+        image: radioButton.image,
         checked: false,
       })
     })
