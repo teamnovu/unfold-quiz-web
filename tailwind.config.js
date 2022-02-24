@@ -39,6 +39,9 @@ module.exports = {
       opacity: {
         15: '.15',
       },
+      aspectRatio: {
+        '9/10': '9 / 10',
+      },
     },
   },
   plugins: [require('autoprefixer')],

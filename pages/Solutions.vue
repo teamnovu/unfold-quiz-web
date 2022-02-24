@@ -2,7 +2,7 @@
   <div class="flex justify-between">
     <div class="w-1/2">
       <h3
-        class="text-custom-gold-light mb-7 text-xl font-bold sm:mb-9 sm:text-3xl"
+        class="mb-7 text-xl font-bold text-custom-gold-light sm:mb-9 sm:text-3xl"
       >
         12 Punkte!
       </h3>
