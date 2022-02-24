@@ -30,7 +30,6 @@ export const mutations = {
     state.page = page || {}
   },
   SET_INDEX(state, index) {
-    console.log(index)
     state.index = index
   },
   SET_USER(state, user) {
