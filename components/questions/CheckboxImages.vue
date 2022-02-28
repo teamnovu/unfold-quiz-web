@@ -24,7 +24,7 @@
           />
           <!-- OVERLAY -->
           <div
-            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
+            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl font-bold"
           >
             {{ checkbox.overlayText }}
           </div>
@@ -34,7 +34,7 @@
         <div
           v-else
           class="relative flex h-full w-full flex-col items-center justify-between rounded-sm px-9 pt-3 pb-5 transition-colors"
-          :class="{ 'bg-custom-gold-light text-black': checkbox.checked }"
+          :class="{ 'bg-custom-gold-gradient text-black': checkbox.checked }"
         >
           <img
             v-if="checkbox.image"
@@ -44,7 +44,7 @@
           />
 
           <div
-            class="typo-400 text-left text-sm sm:left-5"
+            class="typo-400 text-left text-sm sm:left-5 font-bold "
             style="hyphens: auto"
           >
             {{ checkbox.overlayText }}

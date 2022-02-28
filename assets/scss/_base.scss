@@ -40,3 +40,6 @@ select:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+.bg-custom-gold-gradient {
+    background: transparent linear-gradient(129deg, #EBDFB7 0%, #FCE598 100%) 0% 0% no-repeat padding-box;
+}
