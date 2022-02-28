@@ -21,6 +21,7 @@
             font-bold
             sm:mb-20 sm:text-3xl
           "
+
         >
           {{ result }} Punkt{{ result === 1 ? "" : "e" }}!
         </h3>

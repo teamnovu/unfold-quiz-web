@@ -2,11 +2,11 @@
   <QuestionContainer :data="data">
     <div class="grid grid-cols-2 gap-3 sm:gap-8 lg:grid-cols-4">
       <button
-        v-for="(radioButton, index) in radioButtons"
+        v-for="(checkbox, index) in checkboxes"
         :key="index"
         :class="{
           'ring-4 ring-custom-gold-light':
-            radioButton.checked && !data.is_illustration,
+            checkbox.checked && !data.is_illustration,
         }"
         class="transition-all"
         @click="onInput(index)"
@@ -17,16 +17,16 @@
           class="relative aspect-9/10 border-2 border-custom-gold-light"
         >
           <img
-            v-if="radioButton.image"
+            v-if="checkbox.image"
             loading="lazy"
-            :src="radioButton.image.permalink"
+            :src="checkbox.image.permalink"
             class="h-full w-full object-cover"
           />
           <!-- OVERLAY -->
           <div
             class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
           >
-            {{ radioButton.overlayText }}
+            {{ checkbox.overlayText }}
           </div>
         </div>
 
@@ -34,12 +34,12 @@
         <div
           v-else
           class="relative flex h-full w-full flex-col items-center justify-between rounded-sm px-9 pt-3 pb-5 transition-colors"
-          :class="{ 'bg-custom-gold-light text-black': radioButton.checked }"
+          :class="{ 'bg-custom-gold-light text-black': checkbox.checked }"
         >
           <img
-            v-if="radioButton.image"
+            v-if="checkbox.image"
             loading="lazy"
-            :src="radioButton.image.permalink"
+            :src="checkbox.image.permalink"
             class=""
           />
 
@@ -47,7 +47,7 @@
             class="typo-400 text-left text-sm sm:left-5"
             style="hyphens: auto"
           >
-            {{ radioButton.overlayText }}
+            {{ checkbox.overlayText }}
           </div>
         </div>
       </button>
@@ -71,46 +71,49 @@ export default {
 
   data() {
     return {
-      radioButtons: [],
+      checkboxes: [],
     }
   },
 
   mounted() {
     console.log(this.data)
-    if (!this.data.radio_buttons) return
-    this.data.radio_buttons.forEach((radioButton) => {
-      this.radioButtons.push({
-        image: radioButton.image,
-        overlayText: radioButton.image_overlay_text,
+    if (!this.data.checkboxes) return
+    this.data.checkboxes.forEach((checkbox) => {
+      this.checkboxes.push({
+        answer: checkbox.answer,
         checked: false,
+        image: checkbox.image,
+        overlayText: checkbox.image_overlay_text,
       })
     })
   },
 
   methods: {
     onInput(index) {
-      this.radioButtons.forEach((radioButton, i) => {
+      this.checkboxes.forEach((checkbox, i) => {
         if (i === index) {
-          radioButton.checked = true
-        } else {
-          radioButton.checked = false
+          checkbox.checked = !checkbox.checked
         }
       })
-      this.checkAnswer(this.data.radio_buttons[index])
+
+      this.checkAnswer()
     },
 
-    checkAnswer(radioButton) {
+    checkAnswer() {
       // check if answer is correct
-      let correct = false
+      let correct = true
       let answer = ''
-      if (radioButton.correct) {
-        correct = true
-      }
+
+      this.checkboxes.forEach((checkbox, index) => {
+        if (checkbox.checked !== this.data.checkboxes[index].correct) {
+          correct = false
+        }
+      })
 
       if (correct) {
-        answer = this.getCorrectAnswer(radioButton)
+        answer = this.data.answer_correct
       } else {
-        answer = this.getIncorrectAnswer(radioButton)
+        answer = this.data.answer_incorrect
       }
 
       this.$store.dispatch('solutions/storeAnswer', {
@@ -118,22 +121,6 @@ export default {
         answer,
         questionIndex: this.questionIndex,
       })
-    },
-
-    getCorrectAnswer(radioButton) {
-      if (this.data.global_feedback) {
-        return this.data.answer_correct
-      } else {
-        return radioButton.answer_correct_text || this.data.answer_correct
-      }
-    },
-
-    getIncorrectAnswer(radioButton) {
-      if (this.data.global_feedback) {
-        return this.data.answer_incorrect
-      } else {
-        return radioButton.answer_incorrect_text || this.data.answer_incorrect
-      }
     },
   },
 }

@@ -24,10 +24,8 @@
       </div>
 
       <!-- COMPLETION -->
-      <div v-else-if="pageIndex => questions.length + 2">
-        <transition name="slide-right-in" mode="out-in">
-          <Completion :question-index="index" />
-        </transition>
+      <div v-else-if="(pageIndex) => questions.length + 2" key="completion">
+        <Completion :question-index="index" />
       </div>
     </transition>
   </div>
