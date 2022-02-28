@@ -82,7 +82,7 @@ export default {
         answer = this.getIncorrectAnswer(radioButton)
       }
 
-      this.$store.commit('answers/SET_ANSWER', {
+      this.$store.commit('solutions/SET_SOLUTION', {
         correct,
         answer,
         questionIndex: this.questionIndex,

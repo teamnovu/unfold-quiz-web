@@ -72,7 +72,7 @@ export default {
         answer = this.data.answer_incorrect
       }
 
-      this.$store.commit('answers/SET_ANSWER', {
+      this.$store.commit('solutions/SET_SOLUTION', {
         correct,
         answer,
         questionIndex: this.questionIndex,
