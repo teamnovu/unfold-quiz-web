@@ -8,11 +8,11 @@
       px-9
       pt-32
       pb-9
-      sm:pl-28 sm:pr-40 sm:pt-56 sm:pb-28
+      md:pl-28 md:pr-40 md:pt-56 md:pb-28
     "
   >
-    <div class="flex justify-between">
-      <div class="w-1/2">
+    <div class="flex flex-col md:flex-row  justify-between">
+      <div class="md:w-1/2">
         <h3
           class="
             text-custom-gold-light
