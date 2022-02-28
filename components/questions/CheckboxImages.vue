@@ -24,7 +24,7 @@
           />
           <!-- OVERLAY -->
           <div
-            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl font-bold"
+            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm font-bold sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
           >
             {{ checkbox.overlayText }}
           </div>
@@ -44,7 +44,7 @@
           />
 
           <div
-            class="typo-400 text-left text-sm sm:left-5 font-bold "
+            class="typo-400 text-left text-sm font-bold sm:left-5"
             style="hyphens: auto"
           >
             {{ checkbox.overlayText }}
