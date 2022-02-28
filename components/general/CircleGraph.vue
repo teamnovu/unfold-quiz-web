@@ -1,17 +1,17 @@
 <template>
   <div>
     <div class="absolute w-full">
-      <div class="gradient aspect-square h-full w-full rounded-full">asd</div>
+      <div class="gradient aspect-square h-full w-full rounded-full"></div>
     </div>
     <div class="-translate-x-4 -translate-y-4">
       <ul class="sliceWrapper">
         <li
-          v-for="(question, index) in questionsC"
+          v-for="(question, index) in questionsCorect"
           :key="index"
           :style="{
-            transform: `rotate(${index * slicedeg}deg) skewY(${
-              slicedeg + 90
-            }deg);`,
+            transform: `rotate(${(index * slicedeg)}deg) skewY(${
+              (slicedeg + 90)
+            }deg)`,
           }"
         >
           <div class="slice" />
@@ -26,14 +26,28 @@
 
 <script>
 export default {
-  data() {
-    return {
-      questions: 3,
-      questionsC: 1,
+ 
+  props: {
+    result: {
+      type: Number,
+      default: 0
+
+    },
+
+    amountQuestions: {
+      type: Number,
+      default: 0
     }
   },
 
   computed: {
+    questions() {
+      return this.amountQuestions * 2
+    },
+    questionsCorect() {
+      return this.result * 2
+    },
+
     slicedeg() {
       return 360 / this.questions
     },

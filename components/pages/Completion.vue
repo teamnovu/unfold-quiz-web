@@ -7,19 +7,18 @@
         <h3
           class="text-custom-gold-light mb-7 text-xl font-bold sm:mb-20 sm:text-3xl"
         >
-          12 Punkte!
+          {{result}} Punkt{{result === 1 ? '' : 'e' }}!
         </h3>
-        <h1 class="typo-600 max-w-xl">Gratuliere 🥳 du gehörst zu den novu Profis!!</h1>
-        <p class="typo-400 mt-14 max-w-xl">
-          Hol dir jetzt dein Mandelbärli an unserem Stand ab! Zeig uns dafür
-          deine Punktzahl.
+        <h1 class="typo-600 max-w-xl">{{titel}}</h1>
+        <p class="typo-400 mt-14 max-w-xl" v-html="text">
+          
         </p>
       </div>
       <div>
         <div class="w-80 relative pt-8" >
-          <CircleGraph/>
+          <CircleGraph :amountQuestions="amountQuestions" :result="result"/>
         </div>
-        <div class="typo-400 text-center text-gold">12/15 Richtig</div>
+        <div class="typo-400 text-center text-gold-700">{{result}}/{{amountQuestions}} Richtig</div>
       </div>
     </div>
   </div>
@@ -28,9 +27,29 @@
 <script>
 export default {
   computed: {
-    completion() {
-      return this.$store.getters.completion
+   
+    titel() {
+      return 'Gratuliere 🥳 du gehörst zu den novu Profis!!'
     },
+    text() {
+      return 'Hol dir jetzt dein Mandelbärli an unserem Stand ab! Zeig uns dafür deine Punktzahl.'
+    },
+ 
+    result() {
+      return this.$store.getters['solutions/result']
+    },
+    solutions() {
+      return this.$store.getters['solutions/solutions']
+    },
+     completionFeedback() {
+
+       return this.$store.getters.completion.completion_feedback.filter(res => res.point_range <= this.result);
+
+      // return this.$store.getters.completion.completion_feedback
+    },
+    
+
+
 
     index() {
       return this.$store.getters.index - 1
