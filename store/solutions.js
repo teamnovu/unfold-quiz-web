@@ -2,22 +2,35 @@ export const state = () => ({
   solutions: [],
 })
 
-export const mutations = {
-  SET_SOLUTION(state, answer) {
-    // console.log(getters)
-    // const question = getters.questions[answer.questionIndex]
-    // console.log(question)
-    if (state.solutions[answer.questionIndex]) {
-      state.solutions[answer.questionIndex] = {
-        correct: answer.correct,
-        answer: answer.answer,
-      }
-      return
+export const actions = {
+  storeAnswer({ rootGetters, commit }, payload) {
+    const question = rootGetters.questions[payload.questionIndex].question
+
+    const answer = {
+      questionIndex: payload.questionIndex,
+      question,
+      correct: payload.correct,
+      answer: payload.answer,
     }
-    state.solutions.push({
-      correct: answer.correct,
-      answer: answer.answer,
+
+    commit('SET_ANSWER', answer)
+  },
+}
+
+export const mutations = {
+  SET_ANSWER(state, answer) {
+    const solutions = [...state.solutions]
+    const index = solutions.findIndex((solution) => {
+      return solution.questionIndex === answer.questionIndex
     })
+
+    if (index === -1) {
+      solutions.push(answer)
+    } else {
+      solutions[index] = answer
+    }
+
+    state.solutions = solutions
   },
 }
 
