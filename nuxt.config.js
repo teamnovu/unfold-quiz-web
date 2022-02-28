@@ -14,7 +14,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/novu.png' },
       { rel: 'preconnect', href: 'https://use.typekit.net/', crossorigin: '' },
       { rel: 'dns-prefetch', href: 'https://use.typekit.net/' },
       { rel: 'stylesheet', href: 'https://use.typekit.net/kjp6bci.css' },

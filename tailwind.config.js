@@ -20,6 +20,8 @@ module.exports = {
           gray: '#F1EFEA',
           'gray-dark': '#707070',
           'gray-darker': '#2b2b2b',
+          'green-light': '#B4F2B9',
+          'red-light': '#F2C2B4',
         },
         gold: {
           100: '#FFFDF5',

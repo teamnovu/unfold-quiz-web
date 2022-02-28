@@ -1,5 +1,20 @@
 export const state = () => ({
-  solutions: [],
+  solutions: [
+    {
+      questionIndex: 4,
+      question:
+        '<p>Welche dieser Angebote gehören NICHT zu unseren Kernkompetenzen?</p>',
+      correct: false,
+      answer: null,
+    },
+    {
+      questionIndex: 5,
+      question:
+        '<p>Wann wird eine    Checkbox und wann ein    Radio-Button verwendet?</p>',
+      correct: true,
+      answer: '<p>Stimmt</p>',
+    },
+  ],
 })
 
 export const actions = {

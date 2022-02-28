@@ -1,7 +1,7 @@
 <template>
   <div class="relative min-h-screen">
     <!-- LOGO -->
-    <Logo class="absolute top-10 left-10" />
+    <Logo class="absolute left-9 top-9 sm:top-24 sm:left-28" />
     <!-- NUXT -->
     <Nuxt />
     <!-- BORDER -->

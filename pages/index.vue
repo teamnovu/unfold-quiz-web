@@ -1,6 +1,9 @@
 <template>
   <div class="">
-    <transition name="slide-right-in" mode="out-in">
+    <transition
+      :name="pageIndex === 0 ? 'slide-left-in' : 'slide-right-in'"
+      mode="out-in"
+    >
       <!-- INTRO -->
       <Home v-if="pageIndex === 0" key="0" />
       <!-- REGISTER -->
@@ -25,7 +28,7 @@
 
       <!-- COMPLETION -->
       <div v-else-if="(pageIndex) => questions.length + 2" key="completion">
-        <Completion :question-index="index" />
+        <Completion />
       </div>
     </transition>
   </div>

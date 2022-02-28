@@ -38,7 +38,7 @@
         </ValidationObserver>
       </div>
       <!-- CHECKBOX -->
-      <Checkbox @input="user.newsletter = $event">
+      <Checkbox class="space-x-5" @input="user.newsletter = $event">
         {{ register.checkbox_text }}
       </Checkbox>
     </div>

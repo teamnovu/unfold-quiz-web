@@ -5,7 +5,7 @@
       <div class="mb-16">
         <QuestionIndex />
 
-        <QuestionText :data="data.question"/>
+        <QuestionText :data="data.question" />
       </div>
 
       <!-- QUESTION -->
@@ -18,20 +18,22 @@
     <NextButton
       class="self-end"
       @click.native="$store.commit('SET_INDEX', $store.getters.index + 1)"
-      >Nächste Frage
+      >{{
+        $store.getters.index === $store.getters.questions.length + 1
+          ? 'Zum Resultat'
+          : 'Nächste Frage'
+      }}
     </NextButton>
   </Container>
 </template>
 
 <script>
-import QuestionText from '../general/QuestionText.vue'
 export default {
-  components: { QuestionText },
-    props: {
-      data: {
-        type: Object,
-        required: true,
-      },
+  props: {
+    data: {
+      type: Object,
+      required: true,
     },
+  },
 }
 </script>

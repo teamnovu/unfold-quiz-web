@@ -24,7 +24,7 @@
           />
           <!-- OVERLAY -->
           <div
-            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl font-bold"
+            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm font-bold sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
           >
             {{ radioButton.overlayText }}
           </div>
@@ -33,7 +33,7 @@
         <!-- ILLUSTRATION -->
         <div
           v-else
-          class="relative flex h-full w-full flex-col items-center justify-between rounded-sm px-9 pt-3 pb-5 transition-colors font-bold"
+          class="relative flex h-full w-full flex-col items-center justify-between rounded-sm px-9 pt-3 pb-5 font-bold transition-colors"
           :class="{ 'bg-custom-gold-gradient text-black': radioButton.checked }"
         >
           <img
@@ -44,7 +44,7 @@
           />
 
           <div
-            class="typo-400 text-left text-sm sm:left-5 tracking-wide"
+            class="typo-400 text-left text-sm tracking-wide sm:left-5"
             style="hyphens: auto"
           >
             {{ radioButton.overlayText }}

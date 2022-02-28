@@ -1,5 +1,5 @@
 <template>
-  <label class="flex cursor-pointer items-center space-x-5">
+  <label class="flex cursor-pointer items-center">
     <div
       class="relative z-10 flex h-6 w-6 min-w-[1.5rem] items-center justify-center rounded-full border-2 border-custom-gold-light p-1 text-black transition-colors ease-in-out sm:h-7 sm:w-7 sm:min-w-[1.75rem]"
     >

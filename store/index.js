@@ -11,7 +11,7 @@ export const state = () => ({
 })
 
 export const actions = {
-  async nuxtServerInit({ commit, dispatch }, { error, $axios }) {
+  async nuxtServerInit({ commit }, { error, $axios }) {
     let page = {}
     try {
       page = await $axios.$get('/collections/pages/entries/home')
@@ -23,7 +23,6 @@ export const actions = {
     }
 
     commit('SET_PAGE', page?.data)
-
   },
 }
 
