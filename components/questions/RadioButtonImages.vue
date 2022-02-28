@@ -4,11 +4,18 @@
       <button
         v-for="(radioButton, index) in radioButtons"
         :key="index"
-        :class="{ 'ring-4 ring-custom-gold-light': radioButton.checked }"
+        :class="{
+          'ring-4 ring-custom-gold-light':
+            radioButton.checked && !data.is_illustration,
+        }"
         class="transition-all"
         @click="onInput(index)"
       >
-        <div class="relative aspect-9/10 border-2 border-custom-gold-light">
+        <!-- NORMAL IMAGE -->
+        <div
+          v-if="!data.is_illustration"
+          class="relative aspect-9/10 border-2 border-custom-gold-light"
+        >
           <img
             loading="lazy"
             :src="radioButton.image.permalink"
@@ -17,6 +24,22 @@
           <!-- OVERLAY -->
           <div
             class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
+          >
+            {{ radioButton.overlayText }}
+          </div>
+        </div>
+
+        <!-- ILLUSTRATION -->
+        <div
+          v-else
+          class="relative flex h-full w-full flex-col items-center justify-between rounded-sm px-9 pt-3 pb-5 transition-colors"
+          :class="{ 'bg-custom-gold-light text-black': radioButton.checked }"
+        >
+          <img loading="lazy" :src="radioButton.image.permalink" class="" />
+
+          <div
+            class="typo-400 text-left text-sm sm:left-5"
+            style="hyphens: auto"
           >
             {{ radioButton.overlayText }}
           </div>
@@ -47,6 +70,7 @@ export default {
   },
 
   mounted() {
+    console.log(this.data)
     if (!this.data.radio_buttons) return
     this.data.radio_buttons.forEach((radioButton) => {
       this.radioButtons.push({
