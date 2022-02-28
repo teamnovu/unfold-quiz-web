@@ -76,7 +76,6 @@ export default {
   },
 
   mounted() {
-    console.log(this.data)
     if (!this.data.radio_buttons) return
     this.data.radio_buttons.forEach((radioButton) => {
       this.radioButtons.push({

@@ -99,7 +99,6 @@ export default {
 
   methods: {
     async scrollToSolutions() {
-      console.log('scroll to solutions')
       await this.$nextTick()
       this.$refs.solutions.$el.scrollIntoView({
         behavior: 'smooth',

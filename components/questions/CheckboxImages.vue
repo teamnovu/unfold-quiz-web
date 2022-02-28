@@ -76,7 +76,6 @@ export default {
   },
 
   mounted() {
-    console.log(this.data)
     if (!this.data.checkboxes) return
     this.data.checkboxes.forEach((checkbox) => {
       this.checkboxes.push({
