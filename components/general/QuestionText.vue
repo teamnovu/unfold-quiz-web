@@ -48,8 +48,8 @@ import { removePTags } from '~/utils'
 export default {
   props: {
     data: {
-      type: Object,
-      default: () => {}
+      type: Array,
+      default: () => []
     },
   },
   methods: {

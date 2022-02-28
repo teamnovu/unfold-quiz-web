@@ -21,7 +21,6 @@
             font-bold
             sm:mb-20 sm:text-3xl
           "
-
         >
           {{ result }} Punkt{{ result === 1 ? "" : "e" }}!
         </h3>
@@ -76,5 +75,16 @@ export default {
       return this.$store.getters.questions.length;
     },
   },
+   mounted() {
+    this.$confetti.start({
+      defaultColors: ["#D5C283", "#FFFDF5", "#EBDFB7"],
+      defaultSize: 6,
+      particlesPerFrame: 1
+    })
+    window.setTimeout(()=> {
+      this.$confetti.stop()
+    }, 3500);
+  },
+ 
 };
 </script>
