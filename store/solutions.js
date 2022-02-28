@@ -33,6 +33,6 @@ export const getters = {
         correct++
       }
     })
-    return { correct, total: state.solutions.length }
+    return correct
   },
 }
