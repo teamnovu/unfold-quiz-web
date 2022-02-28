@@ -18,6 +18,7 @@
         >
           <img
             loading="lazy"
+            v-if="radioButton.image"
             :src="radioButton.image.permalink"
             class="h-full w-full object-cover"
           />
@@ -35,7 +36,7 @@
           class="relative flex h-full w-full flex-col items-center justify-between rounded-sm px-9 pt-3 pb-5 transition-colors"
           :class="{ 'bg-custom-gold-light text-black': radioButton.checked }"
         >
-          <img loading="lazy" :src="radioButton.image.permalink" class="" />
+          <img loading="lazy"  v-if="radioButton.image" :src="radioButton.image.permalink" class="" />
 
           <div
             class="typo-400 text-left text-sm sm:left-5"
