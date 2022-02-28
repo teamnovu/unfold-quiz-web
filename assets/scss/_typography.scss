@@ -9,7 +9,7 @@
 
     .typo-600 {
         @apply text-2xl leading-8;
-        @apply sm:leading-15 sm:text-6xl;
+        @apply sm:leading-tight sm:text-6xl;
     }
 
 }
