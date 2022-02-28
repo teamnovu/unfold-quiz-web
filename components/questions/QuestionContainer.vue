@@ -5,7 +5,7 @@
       <div class="mb-16">
         <QuestionIndex />
 
-        <h1 class="typo-600 pr-[10vw]" v-html="data.question" />
+        <QuestionText :data="data.question"/>
       </div>
 
       <!-- QUESTION -->
@@ -24,12 +24,14 @@
 </template>
 
 <script>
+import QuestionText from '../general/QuestionText.vue'
 export default {
-  props: {
-    data: {
-      type: Object,
-      required: true,
+  components: { QuestionText },
+    props: {
+      data: {
+        type: Object,
+        required: true,
+      },
     },
-  },
 }
 </script>
