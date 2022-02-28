@@ -1,12 +1,20 @@
 <template>
   <div>
     <div class="absolute w-full">
-      <div class="w-full h-full gradient rounded-full aspect-square">asd</div>
+      <div class="gradient aspect-square h-full w-full rounded-full">asd</div>
     </div>
     <div class="-translate-x-4 -translate-y-4">
       <ul class="sliceWrapper">
-        <li v-for="(question, index) in questionsC" :key="index" :style="{'transform': `rotate(${(index) *slicedeg}deg) skewY(${slicedeg+90}deg);`}">
-          <div class="slice"></div>
+        <li
+          v-for="(question, index) in questionsC"
+          :key="index"
+          :style="{
+            transform: `rotate(${index * slicedeg}deg) skewY(${
+              slicedeg + 90
+            }deg);`,
+          }"
+        >
+          <div class="slice" />
         </li>
         <!-- <li>
           <div class="slice"></div>
@@ -18,21 +26,19 @@
 
 <script>
 export default {
-    data() {
-        return {
-            questions: 3,
-            questionsC: 1,
-        }
-    },
-    computed: {
-        slicedeg() {
-            return 360 / this.questions
-        }
+  data() {
+    return {
+      questions: 3,
+      questionsC: 1,
     }
+  },
 
- 
-
-};
+  computed: {
+    slicedeg() {
+      return 360 / this.questions
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -53,12 +59,8 @@ export default {
 </style>
 
 <style lang="scss">
-
-
 // 360/5=72 -> rotate
 // rotate+90=162 -> skewY
-
-
 
 .sliceWrapper {
   position: relative;
@@ -86,8 +88,8 @@ li {
   width: 100%;
   height: 100%;
   transform-origin: 0% 100%;
-  border:1px #EEEAD9 solid;
-  background: #EEEAD9;
+  border: 1px #eeead9 solid;
+  background: #eeead9;
 }
 
 // @for $i from 1 through 25 {
