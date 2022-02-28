@@ -1,13 +1,14 @@
 export const state = () => ({
-  index: 6,
+  index: 0,
   page: {},
   user: {
-    firstname: '',
-    lastname: '',
-    email: '',
-    company: '',
+    firstname: 'kyle',
+    lastname: 'werner',
+    email: 'kyle.werner2@novu.ch',
+    company: 'novu',
     newsletter: false,
   },
+  isSaved: false,
 })
 
 export const actions = {
@@ -24,6 +25,32 @@ export const actions = {
 
     commit('SET_PAGE', page?.data)
   },
+  async saveResult({ state, getters, rootGetters, commit }) {
+    if (state.isSaved) return
+    const payload = {
+      user: state.user,
+      solutions: rootGetters['solutions/solutions'],
+      points: rootGetters['solutions/result'],
+      total: getters.questions.length,
+    }
+    console.log('asdfasdfasdfasdsadffdsaafsdsdfa')
+    let response = null
+    try {
+      response = await this.$axios.$post('/result', payload)
+    } catch (err) {
+      this.$nuxt.error({
+        statusCode: err.response?.status,
+        message: err.response?.data?.message,
+      })
+    }
+    if (response === 200) commit('SET_SAVED', true)
+    console.log(response)
+  },
+  reset({ commit }) {
+    commit('RESET')
+    commit('solutions/RESET')
+    console.log('reset')
+  },
 }
 
 export const mutations = {
@@ -35,6 +62,19 @@ export const mutations = {
   },
   SET_USER(state, user) {
     state.user = user
+  },
+  SET_SAVED(state, bool) {
+    state.isSaved = bool
+  },
+  RESET(state) {
+    state.isSaved = false
+    state.user = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      company: '',
+      newsletter: false,
+    }
   },
 }
 

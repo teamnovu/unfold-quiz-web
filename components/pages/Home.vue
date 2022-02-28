@@ -46,5 +46,9 @@ export default {
       return this.$store.getters.home
     },
   },
+
+  mounted() {
+    this.$store.dispatch('reset')
+  },
 }
 </script>

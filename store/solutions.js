@@ -1,29 +1,19 @@
 export const state = () => ({
-  solutions: [
-    {
-      questionIndex: 4,
-      question:
-        '<p>Welche dieser Angebote gehören NICHT zu unseren Kernkompetenzen?</p>',
-      correct: false,
-      answer: null,
-    },
-    {
-      questionIndex: 5,
-      question:
-        '<p>Wann wird eine    Checkbox und wann ein    Radio-Button verwendet?</p>',
-      correct: true,
-      answer: '<p>Stimmt</p>',
-    },
-  ],
+  solutions: [],
 })
 
 export const actions = {
   storeAnswer({ rootGetters, commit }, payload) {
     const question = rootGetters.questions[payload.questionIndex].question
-
+    let questionText = ''
+    question.forEach((item) => {
+      if (item.type === 'text') {
+        questionText += item.text
+      }
+    })
     const answer = {
       questionIndex: payload.questionIndex,
-      question,
+      question: questionText,
       correct: payload.correct,
       answer: payload.answer,
     }
@@ -46,6 +36,10 @@ export const mutations = {
     }
 
     state.solutions = solutions
+  },
+
+  RESET(state) {
+    state.solutions = []
   },
 }
 

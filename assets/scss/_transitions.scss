@@ -56,4 +56,14 @@
     }
 }
 
+// FILTER
+.list-filter-enter,
+.list-filter-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-filter-leave-active {
+  position: absolute;
+}
+
 

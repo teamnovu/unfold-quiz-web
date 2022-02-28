@@ -7,8 +7,16 @@
           :key="index"
           v-html="removePTags(el.text)"
         />
-        <RadioButton v-if="el.type === 'radio_buttons'" class="inline-flex" />
-        <Checkbox v-if="el.type === 'checkboxes'" class="inline-flex" />
+        <RadioButton
+          v-if="el.type === 'radio_buttons'"
+          :value="true"
+          class="inline-flex"
+        />
+        <Checkbox
+          v-if="el.type === 'checkboxes'"
+          :value="true"
+          class="inline-flex"
+        />
       </span>
     </h2>
   </div>

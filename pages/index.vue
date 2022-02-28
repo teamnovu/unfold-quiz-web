@@ -39,6 +39,7 @@ import head from '~/mixins/head'
 
 export default {
   mixins: [head],
+
   computed: {
     pageIndex() {
       return this.$store.getters.index

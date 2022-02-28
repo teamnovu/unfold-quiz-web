@@ -94,6 +94,7 @@ export default {
     window.setTimeout(() => {
       this.$confetti.stop()
     }, 3500)
+    this.$store.dispatch('saveResult')
   },
 
   methods: {

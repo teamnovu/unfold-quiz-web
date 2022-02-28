@@ -1,7 +1,7 @@
 <template>
   <div class="cursor-pointer" @click="toggleAccordion">
     <!-- TITLE -->
-    <div class="mb-4 flex items-center justify-between">
+    <div class="flex items-center justify-between">
       <slot name="header" />
       <!-- ICON -->
       <PlusMinus
@@ -21,7 +21,7 @@
       >
         <div
           v-show="selected"
-          class="text-sm transition-all ease-in-out sm:px-20 sm:text-lg"
+          class="ease-in-outsm:text-lg text-sm transition-all"
         >
           <slot name="content" />
         </div>
