@@ -39,6 +39,9 @@
     <transition name="fade">
       <Solutions v-show="showSolutions" ref="solutions" class="mt-16" />
     </transition>
+    <transition name="grow">
+      <GifPlayer v-if="cry" />
+    </transition>
   </Container>
 </template>
 
@@ -46,6 +49,7 @@
 export default {
   data: () => ({
     showSolutions: false,
+    cry: false,
   }),
 
   computed: {
@@ -85,19 +89,49 @@ export default {
     },
   },
 
-  mounted() {
-    this.$confetti.start({
-      defaultColors: ['#D5C283', '#FFFDF5', '#EBDFB7'],
-      defaultSize: 6,
-      particlesPerFrame: 1,
-    })
-    window.setTimeout(() => {
-      this.$confetti.stop()
-    }, 3500)
+  async mounted() {
     this.$store.dispatch('saveResult')
+    await this.$nextTick()
+    this.checkIfCrying() ? this.startCrying() : this.startConfetti()
   },
 
   methods: {
+    checkIfCrying() {
+      const userEmail = this.$store.getters.user.email
+      const history = JSON.parse(localStorage.getItem('history')) || []
+
+      let amountZeroPoints = 0
+      history.forEach((historyItem) => {
+        if (historyItem.user !== userEmail) return
+        if (historyItem.points !== 0) return
+        amountZeroPoints++
+      })
+      if (amountZeroPoints > 2) {
+        localStorage.removeItem('history')
+        return true
+      } else {
+        return false
+      }
+    },
+
+    startCrying() {
+      this.cry = true
+      window.setTimeout(() => {
+        this.cry = false
+      }, 5000)
+    },
+
+    startConfetti() {
+      this.$confetti.start({
+        defaultColors: ['#D5C283', '#FFFDF5', '#EBDFB7'],
+        defaultSize: 6,
+        particlesPerFrame: 1,
+      })
+      window.setTimeout(() => {
+        this.$confetti.stop()
+      }, 3500)
+    },
+
     async scrollToSolutions() {
       await this.$nextTick()
       this.$refs.solutions.$el.scrollIntoView({

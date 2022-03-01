@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <transition
-      :name="pageIndex === 0 ? 'slide-left-in' : 'slide-right-in'"
+      :name="pageIndex === 0 ? 'slideLeftIn' : 'slideRightIn'"
       mode="out-in"
     >
       <!-- INTRO -->
@@ -11,7 +11,7 @@
 
       <!-- QUESTIONS LOOP -->
       <div v-else-if="pageIndex > 1 && pageIndex < questions.length + 2">
-        <transition name="slide-right-in" mode="out-in">
+        <transition name="slideRightIn" mode="out-in">
           <template v-for="(question, index) in questions">
             <Component
               :is="question.type.replace(/_/g, '-')"
@@ -27,7 +27,7 @@
       </div>
 
       <!-- COMPLETION -->
-      <div v-else-if="(pageIndex) => questions.length + 2" key="completion">
+      <div v-else-if="pageIndex >= questions.length + 2" key="completion">
         <Completion />
       </div>
     </transition>

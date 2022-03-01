@@ -1,10 +1,10 @@
 export const state = () => ({
-  index: 0,
+  index: 8,
   page: {},
   user: {
     firstname: '',
     lastname: '',
-    email: '',
+    email: 'kyle.werner@novu.ch',
     company: '',
     newsletter: false,
   },
@@ -33,7 +33,16 @@ export const actions = {
       points: rootGetters['solutions/result'],
       total: getters.questions.length,
     }
-    console.log('asdfasdfasdfasdsadffdsaafsdsdfa')
+
+    const history = JSON.parse(localStorage.getItem('history')) || []
+    const historyItem = {
+      user: payload.user.email,
+      points: payload.points,
+    }
+    history.push(historyItem)
+    console.log(history)
+    localStorage.setItem('history', JSON.stringify(history))
+
     let response = null
     try {
       response = await this.$axios.$post('/result', payload)
@@ -43,13 +52,12 @@ export const actions = {
         message: err.response?.data?.message,
       })
     }
-    if (response === 200) commit('SET_SAVED', true)
-    console.log(response)
+    if (response !== 200) return
+    commit('SET_SAVED', true)
   },
   reset({ commit }) {
     commit('RESET')
     commit('solutions/RESET')
-    console.log('reset')
   },
 }
 
@@ -106,5 +114,8 @@ export const getters = {
       mandelbaerli_text: state.page.completion_mandelbaerli_text,
       no_manderlbaerli_text: state.page.completion_no_mandelbaerli_text,
     }
+  },
+  history: (state) => {
+    return state.history
   },
 }

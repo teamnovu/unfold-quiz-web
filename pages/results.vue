@@ -11,10 +11,10 @@
       </button>
     </div>
 
-    <transition-group name="list-filter" mode="out-in" class="space-y-2">
+    <transition-group name="listFilter" mode="out-in" class="space-y-2">
       <Accordion
-        v-for="user in sortedUsers"
-        :key="user.email"
+        v-for="(user, index) in sortedUsers"
+        :key="user.email || index"
         class="relative rounded bg-white bg-opacity-15 px-7 py-2 transition-all duration-300"
       >
         <!-- HEADER -->
@@ -35,7 +35,7 @@
         <!-- CONTENT -->
         <template #content>
           <div class="py-5">
-            <div v-for="(result, index) in user.results" :key="index">
+            <div v-for="(result, i) in user.results" :key="i">
               <div class="grid grid-cols-2 gap-y-2">
                 <div class="grid w-40 grid-cols-3 gap-1">
                   <div>{{ result.points }}</div>
@@ -64,7 +64,6 @@ export default {
         message: err.response?.data?.message,
       })
     }
-    console.log(page)
     return page
   },
 
