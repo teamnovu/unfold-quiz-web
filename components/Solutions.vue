@@ -21,7 +21,7 @@
             >
               <label
                 class="typo-400 absolute left-1/2 top-1/2 w-auto -translate-y-1/2 -translate-x-1/2 font-bold text-black"
-                >{{ solution.questionIndex }}</label
+                >{{ solution.questionIndex + 1 }}</label
               >
             </div>
 

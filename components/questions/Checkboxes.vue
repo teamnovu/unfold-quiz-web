@@ -1,5 +1,5 @@
 <template>
-  <QuestionContainer :data="data">
+  <QuestionContainer :data="data" @next="checkAnswer()">
     <div class="grid gap-3 sm:gap-5">
       <Checkbox
         v-for="(checkbox, index) in checkboxes"

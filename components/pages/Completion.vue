@@ -114,22 +114,25 @@ export default {
       }
     },
 
-    startCrying() {
+    async startCrying() {
+      await this.timeout(1000)
       this.cry = true
-      window.setTimeout(() => {
-        this.cry = false
-      }, 5000)
+      await this.timeout(5000)
+      this.cry = false
     },
 
-    startConfetti() {
+    timeout(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms))
+    },
+
+    async startConfetti() {
       this.$confetti.start({
         defaultColors: ['#D5C283', '#FFFDF5', '#EBDFB7'],
         defaultSize: 6,
         particlesPerFrame: 1,
       })
-      window.setTimeout(() => {
-        this.$confetti.stop()
-      }, 3500)
+      await this.timeout(3500)
+      this.$confetti.stop()
     },
 
     async scrollToSolutions() {

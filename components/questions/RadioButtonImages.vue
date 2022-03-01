@@ -1,5 +1,5 @@
 <template>
-  <QuestionContainer :data="data">
+  <QuestionContainer :data="data" @next="checkAnswer()">
     <div class="grid grid-cols-2 gap-3 sm:gap-8 lg:grid-cols-4">
       <button
         v-for="(radioButton, index) in radioButtons"
@@ -95,21 +95,28 @@ export default {
           radioButton.checked = false
         }
       })
-      this.checkAnswer(this.data.radio_buttons[index])
+      this.checkAnswer()
     },
 
-    checkAnswer(radioButton) {
-      // check if answer is correct
-      let correct = false
+    checkAnswer() {
+      const index = this.radioButtons.findIndex((radioButton) => {
+        return radioButton.checked
+      })
+      const radioButton = this.data.radio_buttons[index]
       let answer = ''
-      if (radioButton.correct) {
-        correct = true
-      }
+      let correct = false
 
-      if (correct) {
-        answer = this.getCorrectAnswer(radioButton)
+      // if no answer is given
+      if (!radioButton) {
+        correct = false
+        answer = this.data.answer_incorrect
       } else {
-        answer = this.getIncorrectAnswer(radioButton)
+        correct = radioButton.correct
+        if (correct) {
+          answer = this.getCorrectAnswer(radioButton)
+        } else {
+          answer = this.getIncorrectAnswer(radioButton)
+        }
       }
 
       this.$store.dispatch('solutions/storeAnswer', {

@@ -1,10 +1,10 @@
 export const state = () => ({
-  index: 8,
+  index: 2,
   page: {},
   user: {
     firstname: '',
     lastname: '',
-    email: 'kyle.werner@novu.ch',
+    email: '',
     company: '',
     newsletter: false,
   },
@@ -40,7 +40,6 @@ export const actions = {
       points: payload.points,
     }
     history.push(historyItem)
-    console.log(history)
     localStorage.setItem('history', JSON.stringify(history))
 
     let response = null

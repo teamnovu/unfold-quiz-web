@@ -17,7 +17,9 @@
     <!-- NEXT BUTTON -->
     <NextButton
       class="self-end"
-      @click.native="$store.commit('SET_INDEX', $store.getters.index + 1)"
+      @click.native="
+        ;[$store.commit('SET_INDEX', $store.getters.index + 1), $emit('next')]
+      "
       >{{
         $store.getters.index === $store.getters.questions.length + 1
           ? 'Zum Resultat'
