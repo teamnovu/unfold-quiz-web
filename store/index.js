@@ -1,5 +1,6 @@
 export const state = () => ({
   index: 0,
+  lastIndex: 0,
   page: {},
   user: {
     firstname: '',
@@ -70,6 +71,7 @@ export const mutations = {
     state.page = page || {}
   },
   SET_INDEX(state, index) {
+    state.lastIndex = state.index
     state.index = index
   },
   SET_USER(state, user) {
@@ -96,6 +98,9 @@ export const mutations = {
 export const getters = {
   index: (state) => {
     return state.index
+  },
+  direction: (state) => {
+    return state.index > state.lastIndex ? 'next' : 'prev'
   },
   page: (state) => {
     return state.page

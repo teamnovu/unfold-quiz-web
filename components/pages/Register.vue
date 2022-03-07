@@ -39,13 +39,13 @@
       </div>
       <!-- CHECKBOX -->
       <Checkbox class="space-x-5" @input="user.newsletter = $event">
-        {{ register.checkbox_text }}
+        <div class="text-base sm:text-2xl">{{ register.checkbox_text }}</div>
       </Checkbox>
     </div>
 
     <!-- NEXT BUTTON -->
     <NextButton class="self-end" @click.native="nextPage()"
-      >Erste Frage</NextButton
+      >Zur Auswertung</NextButton
     >
   </Container>
 </template>
@@ -100,7 +100,7 @@ export default {
     async nextPage() {
       const isValid = await this.$refs.observer.validate()
       if (!isValid) return
-      this.$store.commit('SET_INDEX', 2)
+      this.$store.commit('SET_INDEX', this.$store.getters.index + 1)
     },
   },
 }

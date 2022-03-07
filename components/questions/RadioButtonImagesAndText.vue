@@ -1,6 +1,6 @@
 <template>
   <QuestionContainer :data="data" @next="checkAnswer()">
-    <div class="grid grid-cols-2 gap-3 sm:gap-14">
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-14">
       <div v-for="(radioButton, index) in radioButtons" :key="index">
         <RadioButton
           :value="radioButton.checked"
@@ -11,7 +11,6 @@
         </RadioButton>
         <div
           class="relative cursor-pointer transition-all"
-          :class="{ 'ring-4 ring-custom-gold-light': radioButton.checked }"
           @click="onInput(index)"
         >
           <img

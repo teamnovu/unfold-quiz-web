@@ -15,7 +15,7 @@ a {
 input,
 textarea {
     @apply appearance-none;
-    @apply outline-none focus-visible:ring ring-custom-gold-light;
+    @apply outline-none ring-custom-gold-light;
 }
 
 *,

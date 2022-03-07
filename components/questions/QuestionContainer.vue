@@ -20,11 +20,14 @@
       @click.native="
         ;[$store.commit('SET_INDEX', $store.getters.index + 1), $emit('next')]
       "
-      >{{
-        $store.getters.index === $store.getters.questions.length + 1
-          ? 'Zum Resultat'
-          : 'Nächste Frage'
-      }}
+    >
+      <div class="text-2xl sm:text-4xl">
+        {{
+          $store.getters.index === $store.getters.questions.length + 1
+            ? 'Zur Registrierung'
+            : 'Nächste Frage'
+        }}
+      </div>
     </NextButton>
   </Container>
 </template>

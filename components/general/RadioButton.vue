@@ -1,13 +1,12 @@
 <template>
-  <label class="flex cursor-pointer items-center">
+  <label class="flex w-fit cursor-pointer items-center">
     <div
       class="relative z-10 flex h-6 w-6 min-w-[1.5rem] items-center justify-center rounded-full border-2 border-custom-gold-light p-1 text-black transition-colors ease-in-out sm:h-7 sm:w-7 sm:min-w-[1.75rem]"
     >
       <input
         v-model="checked"
         type="checkbox"
-        class="relative z-0 h-6 w-6 min-w-[1.5rem] cursor-pointer rounded-full bg-transparent outline-none ring-offset-2 ring-offset-custom-gray-darker focus:ring sm:h-7 sm:w-7 sm:min-w-[1.75rem] sm:ring-offset-4"
-        :value="radioValue"
+        class="relative z-0 h-6 w-6 min-w-[1.5rem] cursor-pointer rounded-full bg-transparent outline-none ring-custom-gold-light ring-offset-custom-gray-darker focus:ring-1 sm:h-7 sm:w-7 sm:min-w-[1.75rem]"
         @change="onChange"
       />
       <transition name="bounce">
@@ -31,16 +30,11 @@ export default {
       type: Boolean,
       default: false,
     },
-
-    radioValue: {
-      type: Boolean,
-      default: false,
-    },
   },
 
   data() {
     return {
-      checkedProxy: false,
+      checkedProxy: this.value,
     }
   },
 

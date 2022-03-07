@@ -1,17 +1,25 @@
 <template>
   <div class="">
     <transition
-      :name="pageIndex === 0 ? 'slideLeftIn' : 'slideRightIn'"
+      :name="
+        $store.getters.direction === 'prev' ? 'slideLeftIn' : 'slideRightIn'
+      "
       mode="out-in"
     >
       <!-- INTRO -->
       <Home v-if="pageIndex === 0" key="0" />
-      <!-- REGISTER -->
-      <Register v-else-if="pageIndex === 1" key="1" />
 
       <!-- QUESTIONS LOOP -->
-      <div v-else-if="pageIndex > 1 && pageIndex < questions.length + 2">
-        <transition name="slideRightIn" mode="out-in">
+      <div
+        v-else-if="pageIndex > 0 && pageIndex < questions.length + 1"
+        key="1"
+      >
+        <transition
+          :name="
+            $store.getters.direction === 'prev' ? 'slideLeftIn' : 'slideRightIn'
+          "
+          mode="out-in"
+        >
           <template v-for="(question, index) in questions">
             <Component
               :is="question.type.replace(/_/g, '-')"
@@ -19,15 +27,16 @@
               :key="index"
               :data="question"
               :question-index="index"
-            >
-              {{ question.type }}
-            </Component>
+            />
           </template>
         </transition>
       </div>
 
+      <!-- REGISTER -->
+      <Register v-else-if="pageIndex === questions.length + 1" key="2" />
+
       <!-- COMPLETION -->
-      <div v-else-if="pageIndex >= questions.length + 2" key="completion">
+      <div v-else-if="pageIndex === questions.length + 2" key="3">
         <Completion />
       </div>
     </transition>
@@ -52,7 +61,7 @@ export default {
 
   methods: {
     isVisible(index) {
-      return index + 2 === this.pageIndex
+      return index + 1 === this.pageIndex
     },
   },
 }

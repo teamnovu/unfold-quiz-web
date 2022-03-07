@@ -1,11 +1,11 @@
 <template>
   <QuestionContainer :data="data" @next="checkAnswer()">
-    <div class="grid gap-3 sm:gap-5">
+    <div class="space-y-5">
       <Checkbox
         v-for="(checkbox, index) in checkboxes"
         :key="index"
         :value="checkbox.checked"
-        class="typo-400 min-h-[4rem] space-x-5 rounded-full bg-white bg-opacity-15 px-6 py-4 sm:min-h-[5rem]"
+        class="typo-400 min-h-[4rem] w-auto space-x-5 rounded-full bg-white bg-opacity-15 px-6 py-4 pr-12 sm:min-h-[5rem] sm:pr-16"
         @input="onInput(index, $event)"
       >
         {{ checkbox.answer }}

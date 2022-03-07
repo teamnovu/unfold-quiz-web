@@ -48,6 +48,18 @@
   transform: translate(50%, 0);
 }
 
+// SLIDE RIGHT IN / RIGHT OUT
+.slideRightInRightOut-leave-active,
+.slideRightInRightOut-enter-active {
+  transition: 0.2s ease-in-out;
+}
+.slideRightInRightOut-enter {
+  transform: translate(150%, 0);
+}
+.slideRightInRightOut-leave-to {
+  transform: translate(50%, 0);
+}
+
 // BOUNCE
 .bounce-enter-active {
     animation: bounce-in .3s;

@@ -1,9 +1,13 @@
 <template>
-  <div
-    ref="lottie"
-    class="logo-container h-6 w-auto md:h-auto"
-    @click="animation.goToAndPlay(0, true)"
-  />
+  <button
+    class="-ml-3 rounded-full p-3"
+    @click=";[animation.goToAndPlay(0, true), $store.commit('SET_INDEX', 0)]"
+  >
+    <div
+      ref="lottie"
+      class="logo-container h-6 w-auto first-letter:md:h-auto"
+    />
+  </button>
 </template>
 
 <script>

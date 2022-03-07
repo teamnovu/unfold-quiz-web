@@ -1,20 +1,19 @@
 <template>
-  <label class="flex cursor-pointer items-center space-x-3">
+  <label class="flex w-fit cursor-pointer items-center space-x-3">
     <div
-      class="relative z-10 flex h-6 w-6 min-w-[1.5rem] items-center justify-center rounded p-1 text-black transition-colors ease-in-out sm:h-7 sm:w-7 sm:min-w-[1.75rem]"
-      :class="[checkedProxy ? 'bg-custom-gold-light' : 'bg-transparent']"
+      class="pointer-events-none relative z-10 flex h-6 w-6 min-w-[1.5rem] items-center justify-center rounded text-black transition-colors ease-in-out sm:h-7 sm:w-7 sm:min-w-[1.75rem]"
     >
       <input
         v-model="checked"
         type="checkbox"
-        class="ring-blue-custom-old relative z-0 h-6 w-6 min-w-[1.5rem] cursor-pointer rounded border-2 border-custom-gold-light bg-transparent outline-none ring-offset-2 ring-offset-custom-gray-darker focus:ring sm:ring-offset-4"
-        :value="checkboxValue"
+        class="ring-blue-custom-old pointer-events-auto relative z-0 h-6 w-6 min-w-[1.5rem] cursor-pointer rounded border-2 border-custom-gold-light outline-none focus:ring-1"
+        :class="[checkedProxy ? 'bg-custom-gold-light' : 'bg-transparent']"
         @change="onChange"
       />
       <transition name="bounce">
         <CheckmarkIcon
           v-if="checkedProxy"
-          class="absolute inset-0 z-10 h-full w-full p-px"
+          class="absolute inset-0 z-10 h-full w-full p-1"
         />
       </transition>
     </div>
@@ -32,16 +31,11 @@ export default {
       type: Boolean,
       default: false,
     },
-
-    checkboxValue: {
-      type: Boolean,
-      default: false,
-    },
   },
 
   data() {
     return {
-      checkedProxy: false,
+      checkedProxy: this.value,
     }
   },
 

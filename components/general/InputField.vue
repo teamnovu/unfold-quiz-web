@@ -13,7 +13,7 @@
     >
       {{ name }}
     </label>
-    <transition mode="out-in" name="slide-right-in">
+    <transition mode="out-in" name="slideRightIn">
       <div
         v-if="!field.valid && field.validated"
         :key="field.errors[0]"

@@ -24,7 +24,7 @@
           />
           <!-- OVERLAY -->
           <div
-            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm font-bold sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
+            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm font-bold uppercase sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
           >
             {{ radioButton.overlayText }}
           </div>

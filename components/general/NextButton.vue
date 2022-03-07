@@ -1,16 +1,59 @@
 <template>
   <button
-    class="mt-16 flex items-center space-x-5 rounded-full p-1 lg:justify-end"
+    class="group mt-16 flex items-center space-x-5 rounded-full p-1 pl-3 lg:justify-end"
+    @mouseenter="hover = true"
+    @mouseleave="hover = false"
   >
-    <span class="typo-400 text-custom-gold-light">
+    <span
+      class="typo-400 text-custom-gold-light transition-colors ease-in-out group-hover:text-custom-gold"
+    >
       <slot />
     </span>
-    <div
-      class="relative h-10 w-10 shrink-0 rounded-full bg-custom-gold-light sm:h-16 sm:w-16"
-    >
-      <ArrowIcon
-        class="absolute left-1/2 top-1/2 w-4 -translate-x-1/2 -translate-y-1/2 text-black sm:w-7"
+    <div class="relative h-10 w-10 shrink-0 sm:h-16 sm:w-16">
+      <!-- CIRCLE -->
+      <div
+        class="absolute inset-0 rounded-full bg-custom-gold-light shadow-inner-right shadow-custom-gold transition-all ease-in-out group-hover:bg-custom-gold"
       />
+      <!-- ARROW -->
+      <div
+        class="absolute inset-0 transition-transform ease-in-out"
+        :class="{ 'rotateY-360': hover }"
+      >
+        <ArrowIcon
+          class="absolute left-1/2 top-1/2 w-4 -translate-x-1/2 -translate-y-1/2 text-black sm:w-7"
+        />
+      </div>
     </div>
   </button>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      hover: false,
+    }
+  },
+}
+</script>
+
+<style scoped>
+.rotateY-360 {
+  backface-visibility: hidden;
+  animation: sphere-turn 0.5s ease-in-out;
+}
+@keyframes sphere-turn {
+  0% {
+    transform: none;
+  }
+  25% {
+    transform: translateX(50%) rotateY(90deg) scaleX(0.95) skewX(10deg);
+  }
+  75% {
+    transform: translateX(-50%) rotateY(270deg) scaleX(0.95) skewX(-10deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+</style>
