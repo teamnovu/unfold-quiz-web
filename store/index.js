@@ -9,6 +9,7 @@ export const state = () => ({
     newsletter: false,
   },
   isSaved: false,
+  mandelbaerliReceived: false,
 })
 
 export const actions = {
@@ -27,11 +28,16 @@ export const actions = {
   },
   async saveResult({ state, getters, rootGetters, commit }) {
     if (state.isSaved) return
+    const mandelbaerliReceived =
+      (100 / getters.questions.length) * rootGetters['solutions/result'] >
+      state.page.min_result_for_mandelbaerli
+
     const payload = {
       user: state.user,
       solutions: rootGetters['solutions/solutions'],
       points: rootGetters['solutions/result'],
       total: getters.questions.length,
+      mandelbaerliReceived,
     }
 
     const history = JSON.parse(localStorage.getItem('history')) || []
@@ -46,12 +52,11 @@ export const actions = {
     try {
       response = await this.$axios.$post('/result', payload)
     } catch (err) {
-      this.$nuxt.error({
-        statusCode: err.response?.status,
-        message: err.response?.data?.message,
-      })
+      console.log(err)
+      return
     }
-    if (response !== 200) return
+
+    commit('SET_MANDELBAERLI_RECEIVED', response)
     commit('SET_SAVED', true)
   },
   reset({ commit }) {
@@ -72,6 +77,9 @@ export const mutations = {
   },
   SET_SAVED(state, bool) {
     state.isSaved = bool
+  },
+  SET_MANDELBAERLI_RECEIVED(state, bool) {
+    state.mandelbaerliReceived = bool
   },
   RESET(state) {
     state.isSaved = false
@@ -116,5 +124,8 @@ export const getters = {
   },
   history: (state) => {
     return state.history
+  },
+  mandelbaerliReceived: (state) => {
+    return state.mandelbaerliReceived
   },
 }

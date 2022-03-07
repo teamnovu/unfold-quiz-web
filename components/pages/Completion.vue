@@ -8,7 +8,13 @@
           {{ result }} Punkt{{ result === 1 ? '' : 'e' }}!
         </h3>
         <h1 class="typo-600 max-w-xl" v-html="completionFeedback.feedback" />
-        <p class="typo-400 mt-14 max-w-xl" v-html="text" />
+        <p class="typo-400 mt-14 max-w-xl">
+          {{
+            mandelbaerliReceived
+              ? completion.no_manderlbaerli_text
+              : completion.manderlbaerli_text
+          }}
+        </p>
       </div>
       <div>
         <div class="relative w-80 pt-8">
@@ -53,8 +59,8 @@ export default {
   }),
 
   computed: {
-    text() {
-      return 'Hol dir jetzt dein Mandelbärli an unserem Stand ab! Zeig uns dafür deine Punktzahl.'
+    completion() {
+      return this.$store.getters.completion
     },
 
     result() {
@@ -67,10 +73,9 @@ export default {
 
     completionFeedback() {
       const percentCorrect = (100 / this.amountQuestions) * this.result // Get percent of correct questions
-      const resultsText =
-        this.$store.getters.completion.completion_feedback.filter(
-          (res) => res.point_range >= percentCorrect
-        ) // Delete all feedback texts which are below the achieved score
+      const resultsText = this.completion.completion_feedback.filter(
+        (res) => res.point_range >= percentCorrect
+      ) // Delete all feedback texts which are below the achieved score
 
       // Sort array
       resultsText.sort(function (a, b) {
@@ -86,6 +91,10 @@ export default {
 
     amountQuestions() {
       return this.$store.getters.questions.length
+    },
+
+    mandelbaerliReceived() {
+      return this.$store.getters.mandelbaerliReceived
     },
   },
 

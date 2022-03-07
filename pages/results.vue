@@ -1,6 +1,8 @@
 <template>
   <Container>
-    <div class="grid w-80 grid-cols-3 gap-5 py-5 text-custom-gold-light">
+    <div
+      class="grid grid-cols-1 gap-5 py-5 text-custom-gold-light sm:grid-cols-3 md:grid-cols-5"
+    >
       <button
         v-for="(sortOption, index) in sortOptions"
         :key="index"
@@ -9,6 +11,8 @@
       >
         {{ sortOption }}
       </button>
+      <div>Total users: {{ sortedUsers.length }}</div>
+      <div>Total attempts: {{ attempts }}</div>
     </div>
 
     <transition-group name="listFilter" mode="out-in" class="space-y-2">
@@ -19,17 +23,18 @@
       >
         <!-- HEADER -->
         <template #header>
-          <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+          <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5">
             <div class="grid w-44 grid-cols-3 gap-1">
               <div class="font-bold text-custom-gold-light">
                 {{ points(user.results).points }}
               </div>
-              <div>von</div>
+              <div>of</div>
               <div>{{ points(user.results).total }}</div>
             </div>
             <div>{{ user.firstname }} {{ user.lastname }}</div>
             <div class="font-bold text-custom-gold-light">{{ user.email }}</div>
-            <div>newsletter: {{ user.newsletter }}</div>
+            <div>Newsletter: {{ user.newsletter }}</div>
+            <div>Attempts: {{ user.results.length }}</div>
           </div>
         </template>
         <!-- CONTENT -->
@@ -39,7 +44,7 @@
               <div class="grid grid-cols-2 gap-y-2">
                 <div class="grid w-40 grid-cols-3 gap-1">
                   <div>{{ result.points }}</div>
-                  <div>von</div>
+                  <div>of</div>
                   <div>{{ result.total }}</div>
                 </div>
                 <div>{{ result.time_field }}</div>
@@ -94,6 +99,14 @@ export default {
         return users.sort((a, b) => b.newsletter - a.newsletter)
       }
       return users
+    },
+
+    attempts() {
+      let attempts = 0
+      this.sortedUsers.forEach((user) => {
+        attempts += user.results.length
+      })
+      return attempts
     },
   },
 
