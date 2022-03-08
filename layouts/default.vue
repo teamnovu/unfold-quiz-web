@@ -18,7 +18,7 @@
     <Nuxt />
     <!-- BORDER -->
     <div
-      class="pointer-events-none fixed inset-0 border-6 border-custom-gold-light sm:border-8"
+      class="pointer-events-none fixed inset-0 border-4 border-custom-gold-light sm:border-6"
     />
   </div>
 </template>

@@ -4,8 +4,6 @@
     <div class="space-y-14">
       <!-- TITLE -->
       <div>
-        <QuestionIndex />
-
         <h1 class="typo-600">
           {{ register.register_title }}
         </h1>

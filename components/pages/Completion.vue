@@ -30,8 +30,8 @@
     <div class="flex w-full justify-between">
       <!-- SHOW SOLUTIONS -->
       <button
-        class="typo-400 mt-16 -ml-3 flex w-min cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light focus:ring"
-        @click=";[(showSolutions = true), scrollToSolutions()]"
+        class="typo-400 mt-16 -ml-3 flex w-min cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light"
+        @click="scrollToSolutions($event)"
       >
         <p class="whitespace-nowrap">Lösungen anzeigen</p>
         <ArrowIcon class="w-6 rotate-90 transform text-custom-gold-light" />
@@ -42,9 +42,7 @@
         >Neues Quiz starten</NextButton
       >
     </div>
-    <transition name="fade">
-      <Solutions v-show="showSolutions" ref="solutions" class="mt-16" />
-    </transition>
+    <Solutions ref="solutions" class="mt-56" />
     <transition name="grow">
       <GifPlayer v-if="cry" />
     </transition>
@@ -54,7 +52,6 @@
 <script>
 export default {
   data: () => ({
-    showSolutions: false,
     cry: false,
   }),
 
@@ -144,8 +141,7 @@ export default {
       this.$confetti.stop()
     },
 
-    async scrollToSolutions() {
-      await this.$nextTick()
+    scrollToSolutions() {
       this.$refs.solutions.$el.scrollIntoView({
         behavior: 'smooth',
         block: 'start',

@@ -4,7 +4,7 @@
     <Accordion
       v-for="(solution, index) in solutions"
       :key="index"
-      class="rounded bg-white bg-opacity-15 p-7"
+      class="rounded bg-custom-gray-darkest p-7"
     >
       <!-- HEADER -->
       <template #header>

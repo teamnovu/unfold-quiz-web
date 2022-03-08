@@ -10,16 +10,18 @@
       <div
         class="col-span-1 mb-20 grid gap-5 sm:gap-10 lg:grid-cols-3 lg:gap-36"
       >
-        <h2 class="typo-600 pr-[10vw] text-3xl sm:text-6xl lg:col-span-2">
-          {{ home.main_title }}
-        </h2>
+        <div class="typo-600">
+          <h2 class="pr-[10vw] text-3xl sm:text-6xl lg:col-span-2">
+            {{ home.main_title }}
+          </h2>
+        </div>
         <!-- START BUTTON -->
         <button
-          class="group -ml-3 flex h-min w-min items-center space-x-5 rounded-full p-1 pl-3 lg:justify-end"
+          class="typo-400 group -ml-3 flex h-min w-min items-center space-x-5 rounded-full p-1 pl-3 lg:justify-end"
           @click="$store.commit('SET_INDEX', 1)"
         >
           <span
-            class="typo-400 whitespace-nowrap text-2xl text-custom-gold-light transition-colors ease-in-out group-hover:text-custom-gold sm:text-4xl"
+            class="whitespace-nowrap text-2xl text-custom-gold-light transition-colors ease-in-out group-hover:text-custom-gold sm:text-4xl"
             >Jetzt starten</span
           >
           <!-- CIRCLE -->

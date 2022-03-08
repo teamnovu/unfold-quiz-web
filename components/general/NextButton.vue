@@ -16,8 +16,7 @@
       />
       <!-- ARROW -->
       <div
-        class="absolute inset-0 transition-transform ease-in-out"
-        :class="{ 'rotateY-360': hover }"
+        class="absolute inset-0 transition-transform ease-in-out group-hover:translate-x-2"
       >
         <ArrowIcon
           class="absolute left-1/2 top-1/2 w-4 -translate-x-1/2 -translate-y-1/2 text-black sm:w-7"
@@ -36,24 +35,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.rotateY-360 {
-  backface-visibility: hidden;
-  animation: sphere-turn 0.5s ease-in-out;
-}
-@keyframes sphere-turn {
-  0% {
-    transform: none;
-  }
-  25% {
-    transform: translateX(50%) rotateY(90deg) scaleX(0.95) skewX(10deg);
-  }
-  75% {
-    transform: translateX(-50%) rotateY(270deg) scaleX(0.95) skewX(-10deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-</style>

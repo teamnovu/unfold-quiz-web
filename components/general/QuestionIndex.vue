@@ -10,7 +10,7 @@
 export default {
   computed: {
     index() {
-      return this.$store.getters.index - 1
+      return this.$store.getters.index
     },
 
     amountQuestions() {

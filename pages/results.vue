@@ -19,7 +19,7 @@
       <Accordion
         v-for="(user, index) in sortedUsers"
         :key="user.email || index"
-        class="relative rounded bg-white bg-opacity-15 px-7 py-2 transition-all duration-300"
+        class="relative rounded bg-custom-gray-darkest px-7 py-2 transition-all duration-300"
       >
         <!-- HEADER -->
         <template #header>

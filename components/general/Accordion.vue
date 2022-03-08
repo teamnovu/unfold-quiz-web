@@ -6,7 +6,7 @@
       <!-- ICON -->
       <PlusMinus
         :plus="selected"
-        class="h-3 w-3 self-start sm:h-5 sm:w-5 sm:self-auto"
+        class="m-5 h-3 w-3 self-start sm:h-5 sm:w-5"
       />
     </div>
 
@@ -21,7 +21,7 @@
       >
         <div
           v-show="selected"
-          class="ease-in-outsm:text-lg text-sm transition-all"
+          class="text-sm transition-all ease-in-out sm:text-lg"
         >
           <slot name="content" />
         </div>
