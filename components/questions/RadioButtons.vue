@@ -9,7 +9,7 @@
         :disabled="checkForFlee(index) && isFleeing"
         class="relative min-h-[4rem] space-x-5 rounded-full bg-white bg-opacity-15 px-6 py-4 pr-12 transition-transform duration-300 ease-in-out sm:min-h-[5rem] sm:pr-16"
         @input="onInput(index)"
-        @click.native="onInput(index)"
+        @click.native="isFleeing ? onInput(index) : null"
         @mouseenter.native="flee(index, $event)"
       >
         {{ radioButton.answer }}
@@ -59,8 +59,10 @@ export default {
     flee(index) {
       if (!this.checkForFlee(index)) return
       const checkbox = document.getElementById(`radio-button-${index}`)
-      const width = checkbox.offsetWidth
-      const length = checkbox.offsetHeight
+      let width = checkbox.offsetWidth
+      let length = checkbox.offsetHeight
+      if (!this.isFleeing) width = width / 3
+      if (!this.isFleeing) length = length / 3
       const x = Math.round(Math.random() * (length - -length) + -length)
       const y = Math.round(Math.random() * (width - -width) + -width)
       checkbox.style.transform = `translate(${x}px, ${y}px)`
@@ -73,11 +75,12 @@ export default {
     },
 
     onInput(index) {
-      if (this.checkForFlee(index) && this.isFleeing) {
+      if (this.checkForFlee(index)) {
         this.timesFleed++
         this.flee(index)
-        return
+        if (this.isFleeing) return
       }
+
       this.radioButtons.forEach((radioButton, i) => {
         if (i === index) {
           radioButton.checked = true
