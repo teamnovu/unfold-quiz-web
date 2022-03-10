@@ -20,7 +20,7 @@
         <div class="relative w-80 pt-8">
           <CircleGraph :amount-questions="amountQuestions" :result="result" />
         </div>
-        <div class="typo-400 text-center text-gold-700">
+        <div class="typo-400 text-center text-gold-600">
           {{ result }}/{{ amountQuestions }} Richtig
         </div>
       </div>
@@ -98,7 +98,13 @@ export default {
   async mounted() {
     this.$store.dispatch('saveResult')
     await this.$nextTick()
-    this.checkIfCrying() ? this.startCrying() : this.startConfetti()
+    if(
+      this.checkIfCrying()
+    ) {
+       this.startCrying()
+    } else if(this.mandelbaerliReceived) {
+      this.startConfetti()
+    }
   },
 
   methods: {
