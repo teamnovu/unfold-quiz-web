@@ -9,7 +9,7 @@
         :disabled="checkForFlee(index) && isFleeing"
         class="relative min-h-[4rem] space-x-5 rounded-full bg-white bg-opacity-15 px-6 py-4 pr-12 transition-transform duration-300 ease-in-out sm:min-h-[5rem] sm:pr-16"
         @input="onInput(index)"
-        @click.native="isFleeing ? onInput(index) : null"
+        @click.native="checkForFlee(index) && isFleeing ? onInput(index) : null"
         @mouseenter.native="flee(index, $event)"
       >
         {{ radioButton.answer }}
