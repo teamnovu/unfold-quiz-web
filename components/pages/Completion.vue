@@ -16,11 +16,11 @@
           }}
         </p>
       </div>
-      <div>
-        <div class="relative w-80 pt-8">
+      <div class="md:block flex justify-between">
+        <div class="relative md:scale-100 scale-75 translate-x-[-12.5%] -mr-16 w-80 pt-8">
           <CircleGraph :amount-questions="amountQuestions" :result="result" />
         </div>
-        <div class="typo-400 text-center text-gold-600">
+        <div class="typo-400 text-center text-gold-600 flex flex-row justify-center items-center">
           {{ result }}/{{ amountQuestions }} Richtig
         </div>
       </div>

@@ -8,6 +8,7 @@
         <li
           v-for="(question, index) in questionsCorect"
           :key="index"
+          class="z-30 last-of-type:z-[29] first-of-type:z-[29] last-of-type:shadow-lg first-of-type:shadow-lg"
           :style="{
             transform: `rotate(${index * slicedeg}deg) skewY(${
               slicedeg + 90
@@ -85,6 +86,7 @@ export default {
   list-style: none;
   overflow: hidden;
 }
+
 
 .slice {
   position: absolute;
