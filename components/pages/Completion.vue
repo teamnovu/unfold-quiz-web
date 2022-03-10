@@ -112,7 +112,8 @@ export default {
         if (historyItem.points !== 0) return
         amountZeroPoints++
       })
-      if (amountZeroPoints > 2) {
+      if (amountZeroPoints >= 1) {
+        // adjust this value to determine how many zero round are needed to cry
         localStorage.removeItem('history')
         return true
       } else {
