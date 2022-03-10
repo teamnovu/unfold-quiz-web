@@ -30,7 +30,7 @@
     <div class="flex w-full justify-between">
       <!-- SHOW SOLUTIONS -->
       <button
-        class="typo-400 mt-16 -ml-3 flex w-min cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light"
+        class="typo-400 mt-16 -ml-3 flex w-min cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light focus-visible:ring"
         @click="scrollToSolutions($event)"
       >
         <p class="whitespace-nowrap">Lösungen anzeigen</p>

@@ -10,8 +10,8 @@
       <div
         class="col-span-1 mb-20 grid gap-5 sm:gap-10 lg:grid-cols-3 lg:gap-36"
       >
-        <div class="typo-600">
-          <h2 class="pr-[10vw] text-3xl sm:text-6xl lg:col-span-2">
+        <div class="typo-600 lg:col-span-2">
+          <h2 class="pr-[10vw] text-3xl sm:text-6xl">
             {{ home.main_title }}
           </h2>
         </div>

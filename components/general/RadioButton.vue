@@ -7,6 +7,7 @@
         v-model="checked"
         type="checkbox"
         class="relative z-0 h-6 w-6 min-w-[1.5rem] cursor-pointer rounded-full bg-transparent outline-none ring-custom-gold-light ring-offset-custom-gray-darker focus:ring-1 sm:h-7 sm:w-7 sm:min-w-[1.75rem]"
+        :disabled="disabled"
         @change="onChange"
       />
       <transition name="bounce">
@@ -27,6 +28,11 @@
 export default {
   props: {
     value: {
+      type: Boolean,
+      default: false,
+    },
+
+    disabled: {
       type: Boolean,
       default: false,
     },

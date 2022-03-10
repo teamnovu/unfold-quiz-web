@@ -5,7 +5,7 @@
         v-for="(checkbox, index) in checkboxes"
         :key="index"
         :class="{
-          'ring-4 ring-custom-gold-light':
+          'ring-8 ring-custom-gold-light':
             checkbox.checked && !data.is_illustration,
         }"
         class="transition-all"

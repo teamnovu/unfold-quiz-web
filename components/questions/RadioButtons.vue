@@ -3,10 +3,14 @@
     <div class="grid gap-3 sm:gap-5">
       <RadioButton
         v-for="(radioButton, index) in radioButtons"
+        :id="`radio-button-${index}`"
         :key="index"
         :value="radioButton.checked"
-        class="min-h-[4rem] space-x-5 rounded-full bg-white bg-opacity-15 px-6 py-4 pr-12 sm:min-h-[5rem] sm:pr-16"
+        :disabled="checkForFlee(index) && isFleeing"
+        class="relative min-h-[4rem] space-x-5 rounded-full bg-white bg-opacity-15 px-6 py-4 pr-12 transition-transform duration-300 ease-in-out sm:min-h-[5rem] sm:pr-16"
         @input="onInput(index)"
+        @click.native="onInput(index)"
+        @mouseenter.native="flee(index, $event)"
       >
         {{ radioButton.answer }}
       </RadioButton>
@@ -31,7 +35,14 @@ export default {
   data() {
     return {
       radioButtons: [],
+      timesFleed: 0,
     }
+  },
+
+  computed: {
+    isFleeing() {
+      return this.timesFleed <= 5
+    },
   },
 
   mounted() {
@@ -45,7 +56,28 @@ export default {
   },
 
   methods: {
+    flee(index) {
+      if (!this.checkForFlee(index)) return
+      const checkbox = document.getElementById(`radio-button-${index}`)
+      const width = checkbox.offsetWidth
+      const length = checkbox.offsetHeight
+      const x = Math.round(Math.random() * (length - -length) + -length)
+      const y = Math.round(Math.random() * (width - -width) + -width)
+      checkbox.style.transform = `translate(${x}px, ${y}px)`
+      checkbox.style.backgroundColor = '#2b2b2b'
+      checkbox.style.zIndex = '100'
+    },
+
+    checkForFlee(index) {
+      return this.data.radio_buttons[index].answer === 'WordPress'
+    },
+
     onInput(index) {
+      if (this.checkForFlee(index) && this.isFleeing) {
+        this.timesFleed++
+        this.flee(index)
+        return
+      }
       this.radioButtons.forEach((radioButton, i) => {
         if (i === index) {
           radioButton.checked = true
