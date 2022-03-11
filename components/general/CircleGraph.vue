@@ -1,21 +1,28 @@
 <template>
   <div>
     <div class="absolute w-full">
-      <div class="gradient aspect-square h-full w-full rounded-full" />
+      <div class="gradient aspect-square h-full w-full rounded-full" 
+      
+          @mouseenter="$emit('hoverOverCircle')"
+          @mouseleave="$emit('hoverLeave')"
+      />
     </div>
-    <div class="-translate-x-4 -translate-y-4">
-      <ul class="sliceWrapper">
+    <div class="-translate-x-4 -translate-y-4 pointer-events-none">
+      <ul class="sliceWrapper group"
+      >
         <li
+          @mouseenter="$emit('hoverOverResult')"
+          @mouseleave="$emit('hoverLeave')"
           v-for="(question, index) in questionsCorect"
           :key="index"
-          class="z-30 last-of-type:z-[29] first-of-type:z-[29] last-of-type:shadow-lg first-of-type:shadow-lg"
+          class="z-30 last-of-type:z-[29] group-hover:first-of-type:shadow-[0px_98px_18px_-6px_rgba(0,0,0,0.5)] group-hover:last-of-type:shadow-[0px_98px_18px_-6px_rgba(0,0,0,0.3)]  first-of-type:z-[29] last-of-type:shadow-lg first-of-type:shadow-lg pointer-events-auto"
           :style="{
             transform: `rotate(${index * slicedeg}deg) skewY(${
               slicedeg + 90
             }deg)`,
           }"
         >
-          <div class="slice" />
+          <!-- <div class="slice" /> -->
         </li>
         <!-- <li>
           <div class="slice"></div>

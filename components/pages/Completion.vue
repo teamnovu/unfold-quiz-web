@@ -16,12 +16,14 @@
           }}
         </p>
       </div>
-      <div class="md:block flex justify-between">
+      <div class="md:block flex justify-between relative">
         <div class="relative md:scale-100 scale-75 translate-x-[-12.5%] -mr-16 w-80 pt-8">
-          <CircleGraph :amount-questions="amountQuestions" :result="result" />
+          <CircleGraph :amount-questions="amountQuestions" :result="result" @hoverLeave="mouseleave()" @hoverOverCircle="hoverOverCircle()" @hoverOverResult="hoverOverResult()" />
         </div>
-        <div class="typo-400 text-center text-gold-600 flex flex-row justify-center items-center">
-          {{ result }}/{{ amountQuestions }} Richtig
+        <div class="typo-400 text-center text-gold-600 flex flex-row justify-center items-center absolute w-full">
+          {{
+            showHoverText ? resultText : `${result}/${amountQuestions} Richtig`
+          }}
         </div>
       </div>
     </div>
@@ -53,6 +55,8 @@
 export default {
   data: () => ({
     cry: false,
+  showHoverText: false,
+  resultText: ''
   }),
 
   computed: {
@@ -125,6 +129,19 @@ export default {
       } else {
         return false
       }
+    },
+    hoverOverCircle() {
+      this.showHoverText = true
+      this.resultText = `${this.amountQuestions} Fragen falsch Beantwortet`
+      console.log('circle');
+    },
+    hoverOverResult() {
+      this.showHoverText = true
+      this.resultText = `${this.result} Fragen richtig Beantwortet`
+      console.log('result');
+    },
+    mouseleave() {
+      this.showHoverText = false
     },
 
     async startCrying() {
