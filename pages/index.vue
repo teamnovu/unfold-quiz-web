@@ -59,6 +59,13 @@ export default {
     },
   },
 
+  mounted() {
+    this.$store.commit(
+      'SET_INDEX',
+      parseInt(localStorage.getItem('index') || 0)
+    )
+  },
+
   methods: {
     isVisible(index) {
       return index + 1 === this.pageIndex

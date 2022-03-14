@@ -73,6 +73,7 @@ export const mutations = {
   SET_INDEX(state, index) {
     state.lastIndex = state.index
     state.index = index
+    localStorage.setItem('index', index)
   },
   SET_USER(state, user) {
     state.user = user
