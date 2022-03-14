@@ -60,10 +60,9 @@ export default {
   },
 
   mounted() {
-    this.$store.commit(
-      'SET_INDEX',
-      parseInt(localStorage.getItem('index') || 0)
-    )
+    let index = parseInt(localStorage.getItem('index') || 0)
+    if (index === this.questions.length + 2) index = 0
+    this.$store.commit('SET_INDEX', index)
   },
 
   methods: {
