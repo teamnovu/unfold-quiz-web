@@ -2,17 +2,21 @@
   <ValidationProvider v-slot="field" class="relative" :rules="rules">
     <input
       v-model="innerValue"
-      class="typo-400 peer block h-16 w-full rounded-full bg-white bg-opacity-15 px-9 py-4 placeholder-transparent sm:h-20 sm:text-2xl"
+      class="typo-400 peer block h-16 w-full translate-y-[0.625rem] rounded-full bg-transparent px-9 py-4 placeholder-transparent placeholder-shown:translate-y-0 focus:translate-y-[0.625rem] sm:h-20 sm:text-2xl"
       type="text"
       :name="name"
       :placeholder="name"
     />
     <label
-      class="pointer-events-none absolute top-1 left-9 text-xs text-custom-gray-dark transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs sm:text-base peer-placeholder-shown:sm:text-2xl peer-focus:sm:text-base"
+      class="pointer-events-none absolute top-3 left-9 text-xs text-custom-gray-dark transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-3 peer-focus:text-xs sm:text-base peer-placeholder-shown:sm:top-6 peer-placeholder-shown:sm:text-2xl peer-focus:sm:text-base"
       :for="name"
     >
       {{ name }}
     </label>
+    <!-- BACKGROUND -->
+    <div
+      class="pointer-events-none absolute inset-0 h-16 w-full rounded-full bg-white bg-opacity-15 sm:h-20"
+    />
     <transition mode="out-in" name="slideRightIn">
       <div
         v-if="!field.valid && field.validated"
