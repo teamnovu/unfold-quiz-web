@@ -16,11 +16,21 @@
           }}
         </p>
       </div>
-      <div class="md:block flex justify-between relative">
-        <div class="relative md:scale-100 scale-75 translate-x-[-12.5%] -mr-16 w-80 pt-8">
-          <CircleGraph :amount-questions="amountQuestions" :result="result" @hoverLeave="mouseleave()" @hoverOverCircle="hoverOverCircle()" @hoverOverResult="hoverOverResult()" />
+      <div class="relative flex justify-between md:block">
+        <div
+          class="relative -mr-16 w-80 translate-x-[-12.5%] scale-75 pt-8 md:scale-100"
+        >
+          <CircleGraph
+            :amount-questions="amountQuestions"
+            :result="result"
+            @hover-leave="mouseleave()"
+            @hover-over-circle="hoverOverCircle()"
+            @hover-over-result="hoverOverResult()"
+          />
         </div>
-        <div class="typo-400 text-center text-gold-600 flex flex-row justify-center items-center absolute w-full">
+        <div
+          class="typo-400 absolute flex w-full flex-row items-center justify-center text-center text-gold-600"
+        >
           {{
             showHoverText ? resultText : `${result}/${amountQuestions} Richtig`
           }}
@@ -55,8 +65,8 @@
 export default {
   data: () => ({
     cry: false,
-  showHoverText: false,
-  resultText: ''
+    showHoverText: false,
+    resultText: '',
   }),
 
   computed: {
@@ -102,11 +112,9 @@ export default {
   async mounted() {
     this.$store.dispatch('saveResult')
     await this.$nextTick()
-    if(
-      this.checkIfCrying()
-    ) {
-       this.startCrying()
-    } else if(this.mandelbaerliReceived) {
+    if (this.checkIfCrying()) {
+      this.startCrying()
+    } else if (this.mandelbaerliReceived) {
       this.startConfetti()
     }
   },
@@ -130,16 +138,19 @@ export default {
         return false
       }
     },
+
     hoverOverCircle() {
       this.showHoverText = true
       this.resultText = `${this.amountQuestions} Fragen falsch Beantwortet`
-      console.log('circle');
+      console.log('circle')
     },
+
     hoverOverResult() {
       this.showHoverText = true
       this.resultText = `${this.result} Fragen richtig Beantwortet`
-      console.log('result');
+      console.log('result')
     },
+
     mouseleave() {
       this.showHoverText = false
     },
