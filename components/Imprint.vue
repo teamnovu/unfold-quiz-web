@@ -1,9 +1,12 @@
 <template>
   <div class="flex items-center gap-5">
-    <img
-      class="h-12 w-52 sm:h-24 sm:w-[25.25rem]"
-      src="~/assets/images/pointer.png"
-    />
+    <a href="https://novu.ch/" aria-label="Link zu novu.ch">
+      <img
+        class="h-12 w-52 sm:h-24 sm:w-[25.25rem]"
+        src="~/assets/images/pointer.png"
+      />
+    </a>
+
     <div class="typo-400 flex flex-col gap-6 xs:flex-row">
       <div class="flex flex-col text-sm sm:text-2xl">
         <a href="mailto:hallo@novu.ch">hallo@novu.ch</a>
