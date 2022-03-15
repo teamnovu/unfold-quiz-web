@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="absolute w-full">
-      <div v-if="showResult" class="absolute cursor-pointer bg-white rounded-sm text-black shadow-lg  px-4 py-2 z-50 pr-6 before:w-3 before:h-3 before:absolute before:rotate-45 before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:bg-white ml-[-5%] mt-[30%] pointer-events-none"><span class="font-semibold">Falsch</span>
+      <div v-if="showResult" class="absolute cursor-pointer bg-white rounded-sm text-black shadow-lg  px-4 py-2 z-50 pr-6 before:w-3 before:h-3 before:absolute before:rotate-45 before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:bg-white ml-[-5%] mt-[20%] pointer-events-none"><span class="font-semibold">Falsch</span>
         <div class="text-custom-gray-dark">{{round(100 / amountQuestions * (amountQuestions - result))}}%</div>
       </div>
       <div
@@ -13,7 +13,7 @@
       />
     </div>
     <div class="pointer-events-none -translate-x-4 -translate-y-4">
-      <div v-if="showCorrect" class="absolute bg-white rounded-sm text-black shadow-lg px-4 py-2 z-50 ml-[60%] pr-6 before:w-3 before:h-3 before:absolute before:rotate-45 before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:bg-white pointer-events-none"><span class="font-semibold">Richtig</span>
+      <div v-if="showCorrect" class="absolute bg-white rounded-sm text-black shadow-lg px-4 py-2 z-50 ml-[40%] pr-6 before:w-3 before:h-3 before:absolute before:rotate-45 before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:bg-white pointer-events-none"><span class="font-semibold">Richtig</span>
         <div class="text-custom-gray-dark">{{round(100 / amountQuestions * result)}}%</div>
       </div>
       <ul class="sliceWrapper group">
