@@ -63,11 +63,10 @@ export default {
       let length = checkbox.offsetHeight
       if (!this.isFleeing) width = width / 3
       if (!this.isFleeing) length = length / 3
-      checkbox.classList.add('hoverColor')
       const x = Math.round(Math.random() * (length - -length) + -length)
       const y = Math.round(Math.random() * (width - -width) + -width)
       checkbox.style.transform = `translate(${x}px, ${y}px)`
-      // checkbox.style.backgroundColor = '#2b2b2b'
+      checkbox.style.backgroundColor = '#2b2b2b'
       checkbox.style.zIndex = '100'
     },
 
@@ -138,12 +137,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.hoverColor {
-  background-color: #2b2b2b;
-}
-.hoverColor:hover {
-  background-color: #F03C39;
-}
-</style>
