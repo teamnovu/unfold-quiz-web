@@ -1,10 +1,10 @@
 <template>
-  <div class="space-y-6">
+  <div class="space-y-4 sm:space-y-6">
     <h2 class="typo-400 font-bold text-custom-gold-light">Die Lösungen</h2>
     <Accordion
       v-for="(solution, index) in solutions"
       :key="index"
-      class="rounded bg-custom-gray-darkest p-7"
+      class="rounded bg-custom-gray-darkest p-4 sm:p-7"
     >
       <!-- HEADER -->
       <template #header>
@@ -39,15 +39,15 @@
               </p>
               <!-- DESKTOP -->
               <div
-                class="hidden text-base sm:block sm:text-2xl"
-                v-html="solution.question"
+                class="hidden text-base sm:block sm:pr-24 sm:text-2xl"
+                v-html="stripHtmlTags(solution.question)"
               />
             </div>
           </div>
           <!-- MOBILE -->
           <div
             class="text-base sm:hidden sm:text-2xl"
-            v-html="solution.question"
+            v-html="stripHtmlTags(solution.question)"
           />
         </div>
       </template>
@@ -64,6 +64,13 @@ export default {
   computed: {
     solutions() {
       return this.$store.getters['solutions/solutions']
+    },
+  },
+
+  methods: {
+    stripHtmlTags(text) {
+      if (!text) return ''
+      return text.replace(/(<([^>]+)>)/gi, '')
     },
   },
 }

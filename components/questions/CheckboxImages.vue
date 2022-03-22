@@ -1,6 +1,6 @@
 <template>
   <QuestionContainer :data="data" @next="checkAnswer()">
-    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
+    <div class="grid grid-cols-2 gap-3 sm:gap-8 lg:grid-cols-4">
       <button
         v-for="(checkbox, index) in checkboxes"
         :key="index"
@@ -33,21 +33,23 @@
         <!-- ILLUSTRATION -->
         <div
           v-else
-          class="relative flex h-full w-full flex-col items-center justify-between rounded-sm px-9 pt-3 pb-5 transition-colors"
+          class="relative flex h-full w-full flex-col items-center justify-between rounded-sm p-3 transition-colors md:px-9 md:pt-3 md:pb-5"
           :class="{ 'bg-custom-gold-gradient text-black': checkbox.checked }"
         >
-          <img
-            v-if="checkbox.image"
-            loading="lazy"
-            :src="checkbox.image.permalink"
-            class=""
-          />
+          <div class="aspect-square">
+            <img
+              v-if="checkbox.image"
+              loading="lazy"
+              :src="checkbox.image.permalink"
+              class="h-full w-full object-cover"
+            />
+          </div>
 
           <div
-            class="typo-400 text-left text-sm font-bold sm:left-5"
+            class="typo-400 text-left uppercase sm:left-5"
             style="hyphens: auto"
           >
-            {{ checkbox.overlayText }}
+            <span class="text-sm sm:text-xl">{{ checkbox.overlayText }}</span>
           </div>
         </div>
       </button>

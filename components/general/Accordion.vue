@@ -6,7 +6,7 @@
       <!-- ICON -->
       <PlusMinus
         :plus="selected"
-        class="m-5 h-3 w-3 self-start sm:h-5 sm:w-5"
+        class="h-3 w-3 self-start sm:m-5 sm:h-5 sm:w-5"
       />
     </div>
 

@@ -10,12 +10,12 @@
         <RadioButton
           v-if="el.type === 'radio_buttons'"
           :value="true"
-          class="inline-flex"
+          class="inline-flex translate-y-1 scale-75 transform md:translate-y-0 md:scale-125"
         />
         <Checkbox
           v-if="el.type === 'checkboxes'"
           :value="true"
-          class="inline-flex"
+          class="inline-flex translate-y-1 scale-75 transform md:translate-y-0 md:scale-125"
         />
       </span>
     </h2>

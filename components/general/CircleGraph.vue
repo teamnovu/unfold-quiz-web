@@ -1,26 +1,37 @@
 <template>
   <div>
     <div class="absolute w-full">
-      <div v-if="showResult" class="absolute cursor-pointer bg-white rounded-sm text-black shadow-lg  px-4 py-2 z-50 pr-6 before:w-3 before:h-3 before:absolute before:rotate-45 before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:bg-white ml-[-5%] mt-[20%] pointer-events-none"><span class="font-semibold">Falsch</span>
-        <div class="text-custom-gray-dark">{{round(100 / amountQuestions * (amountQuestions - result))}}%</div>
+      <div
+        v-if="showResult"
+        class="pointer-events-none absolute z-50 ml-[-5%] mt-[20%] cursor-pointer rounded-sm bg-white px-4 py-2 pr-6 text-black shadow-lg before:absolute before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:h-3 before:w-3 before:rotate-45 before:bg-white"
+      >
+        <span class="font-semibold">Falsch</span>
+        <div class="text-custom-gray-dark">
+          {{ round((100 / amountQuestions) * (amountQuestions - result)) }}%
+        </div>
       </div>
       <div
         class="gradient aspect-square h-full w-full rounded-full"
         @click="clickResult()"
         @mouseenter="clickResult()"
         @mouseleave="reset()"
-
       />
     </div>
     <div class="pointer-events-none -translate-x-4 -translate-y-4">
-      <div v-if="showCorrect" class="absolute bg-white rounded-sm text-black shadow-lg px-4 py-2 z-50 ml-[40%] pr-6 before:w-3 before:h-3 before:absolute before:rotate-45 before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:bg-white pointer-events-none"><span class="font-semibold">Richtig</span>
-        <div class="text-custom-gray-dark">{{round(100 / amountQuestions * result)}}%</div>
+      <div
+        v-if="showCorrect"
+        class="pointer-events-none absolute z-50 ml-[40%] rounded-sm bg-white px-4 py-2 pr-6 text-black shadow-lg before:absolute before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:h-3 before:w-3 before:rotate-45 before:bg-white"
+      >
+        <span class="font-semibold">Richtig</span>
+        <div class="text-custom-gray-dark">
+          {{ round((100 / amountQuestions) * result) }}%
+        </div>
       </div>
       <ul class="sliceWrapper group">
         <li
           v-for="(question, index) in questionsCorect"
           :key="index"
-          class="pointer-events-auto z-30 first-of-type:z-[29] first-of-type:shadow-lg last-of-type:z-[29] last-of-type:shadow-lg transition-all group-hover:first-of-type:shadow-[0px_98px_18px_-6px_rgba(0,0,0,0.5)] transition-all group-hover:last-of-type:shadow-[0px_0px_18px_-6px_rgba(0,0,0,0.4)]"
+          class="pointer-events-auto z-30 transition-all first-of-type:z-[29] first-of-type:shadow-lg last-of-type:z-[29] last-of-type:shadow-lg group-hover:first-of-type:shadow-[0px_98px_18px_-6px_rgba(0,0,0,0.5)] group-hover:last-of-type:shadow-[0px_0px_18px_-6px_rgba(0,0,0,0.4)]"
           :style="{
             transform: `rotate(${index * slicedeg}deg) skewY(${
               slicedeg + 90
@@ -53,10 +64,11 @@ export default {
       default: 0,
     },
   },
+
   data() {
     return {
       showResult: false,
-      showCorrect: false
+      showCorrect: false,
     }
   },
 
@@ -73,24 +85,27 @@ export default {
       return 360 / this.questions
     },
   },
+
   methods: {
     clickResult() {
       this.showResult = !this.showResult
       this.showCorrect = false
     },
+
     reset() {
       this.showCorrect = false
       this.showResult = false
-
     },
+
     clickCorrect() {
       this.showResult = false
       this.showCorrect = !this.showCorrect
     },
+
     round(num) {
       return Math.round(num * 100) / 100
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -144,7 +159,6 @@ li {
   border: 1px #eeead9 solid;
   background: #eeead9;
 }
-
 
 // @for $i from 1 through 25 {
 //   li:nth-child(#{$i}) {

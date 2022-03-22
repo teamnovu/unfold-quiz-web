@@ -12,7 +12,7 @@
     <div class="relative h-10 w-10 shrink-0 sm:h-16 sm:w-16">
       <!-- CIRCLE -->
       <div
-        class="absolute inset-0 rounded-full bg-custom-gold-light shadow-inner-right shadow-custom-gold transition-all ease-in-out group-hover:bg-custom-gold"
+        class="absolute inset-0 rounded-full bg-custom-gold-light shadow-inner-right shadow-custom-gold transition-all ease-in-out group-hover:scale-110 group-hover:bg-custom-gold"
       />
       <!-- ARROW -->
       <div

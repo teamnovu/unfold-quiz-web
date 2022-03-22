@@ -27,6 +27,7 @@ export const actions = {
 
     commit('SET_PAGE', page?.data)
   },
+
   async saveResult({ state, getters, rootGetters, commit }) {
     if (state.isSaved) return
     const mandelbaerliReceived =
@@ -60,6 +61,7 @@ export const actions = {
     commit('SET_MANDELBAERLI_RECEIVED', response)
     commit('SET_SAVED', true)
   },
+
   reset({ commit }) {
     commit('RESET')
     commit('solutions/RESET')

@@ -7,7 +7,10 @@
         >
           {{ result }} Punkt{{ result === 1 ? '' : 'e' }}!
         </h3>
-        <h1 class="typo-600 max-w-xl" v-html="completionFeedback.feedback" />
+        <h1
+          class="typo-600 max-w-xl sm:leading-15"
+          v-html="completionFeedback.feedback"
+        />
         <p class="typo-400 mt-14 max-w-xl">
           {{
             mandelbaerliReceived
@@ -114,7 +117,7 @@ export default {
     await this.$nextTick()
     if (this.checkIfCrying()) {
       this.startCrying()
-    } else if (this.mandelbaerliReceived) {
+    } else {
       this.startConfetti()
     }
   },

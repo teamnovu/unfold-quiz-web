@@ -26,7 +26,7 @@
           >
           <!-- CIRCLE -->
           <div
-            class="relative h-10 w-10 shrink-0 rounded-full bg-custom-gold-light shadow-inner-right shadow-custom-gold transition-all ease-in-out group-hover:bg-custom-gold sm:h-20 sm:w-20"
+            class="relative h-10 w-10 shrink-0 rounded-full bg-custom-gold-light shadow-inner-right shadow-custom-gold transition-all ease-in-out group-hover:scale-110 group-hover:bg-custom-gold sm:h-20 sm:w-20"
           >
             <!-- ARROW -->
             <div

@@ -8,7 +8,7 @@
       <Logo />
       <transition name="slideRightInRightOut">
         <BackButton
-          v-if="$store.getters.index !== 0"
+          v-if="$store.getters.index > 1"
           @click.native="$store.commit('SET_INDEX', $store.getters.index - 1)"
           >Zurück</BackButton
         >
