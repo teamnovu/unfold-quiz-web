@@ -5,7 +5,10 @@
         v-for="(checkbox, index) in checkboxes"
         :key="index"
         :value="checkbox.checked"
-        class="typo-400 min-h-[4rem] w-auto space-x-5 rounded-[3rem] bg-white bg-opacity-15 px-6 py-4 pr-12 sm:min-h-[5rem] sm:pr-16"
+        class="typo-400 min-h-[4rem] w-auto space-x-5 rounded-[3rem] bg-white bg-opacity-15 px-6 py-4 pr-12 transition-colors sm:min-h-[5rem] sm:pr-16"
+        :class="{
+          'bg-opacity-25': checkbox.checked,
+        }"
         @input="onInput(index, $event)"
       >
         {{ checkbox.answer }}

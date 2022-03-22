@@ -3,10 +3,7 @@
     class="-ml-3 rounded-full p-3"
     @click=";[animation.goToAndPlay(0, true), $store.commit('SET_INDEX', 0)]"
   >
-    <div
-      ref="lottie"
-      class="logo-container h-6 w-auto first-letter:md:h-auto"
-    />
+    <div ref="lottie" class="w-16 sm:w-28" />
   </button>
 </template>
 
@@ -37,20 +34,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.logo-container {
-  width: 123px;
-  height: 26px;
-}
+@media (min-width: 640px) {
+  ::v-deep svg {
+    transition: all 0.5s ease;
 
-::v-deep svg {
-  transition: all 0.5s ease;
+    &:hover {
+      @apply text-custom-gold;
 
-  &:hover {
-    @apply text-gold-700;
-
-    path {
-      fill: currentColor;
-      stroke: currentColor;
+      path {
+        fill: currentColor;
+        stroke: currentColor;
+      }
     }
   }
 }

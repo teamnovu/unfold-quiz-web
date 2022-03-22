@@ -7,7 +7,10 @@
         :key="index"
         :value="radioButton.checked"
         :disabled="checkForFlee(index) && isFleeing"
-        class="relative min-h-[4rem] space-x-5 rounded-[3rem] bg-white bg-opacity-15 px-6 py-4 pr-12 transition-transform duration-300 ease-in-out sm:min-h-[5rem] sm:pr-16"
+        class="relative min-h-[4rem] space-x-5 rounded-[3rem] bg-white bg-opacity-15 px-6 py-4 pr-12 transition-all sm:min-h-[5rem] sm:pr-16"
+        :class="{
+          'bg-opacity-25': radioButton.checked,
+        }"
         @input="onInput(index)"
         @click.native="checkForFlee(index) && isFleeing ? onInput(index) : null"
         @mouseenter.native="flee(index, $event)"

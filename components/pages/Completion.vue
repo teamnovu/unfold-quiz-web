@@ -1,61 +1,65 @@
 <template>
   <Container class="flex min-h-screen flex-col justify-between">
-    <div class="flex flex-col justify-between md:flex-row">
-      <div class="md:w-1/2">
-        <h3
-          class="mb-7 text-xl font-bold text-custom-gold-light sm:mb-20 sm:text-3xl"
-        >
-          {{ result }} Punkt{{ result === 1 ? '' : 'e' }}!
-        </h3>
-        <h1
-          class="typo-600 max-w-xl sm:leading-15"
-          v-html="completionFeedback.feedback"
-        />
-        <p class="typo-400 mt-14 max-w-xl">
-          {{
-            mandelbaerliReceived
-              ? completion.no_manderlbaerli_text
-              : completion.manderlbaerli_text
-          }}
-        </p>
-      </div>
-      <div class="relative flex justify-between md:block">
-        <div
-          class="relative -mr-16 w-80 translate-x-[-12.5%] scale-75 pt-8 md:scale-100"
-        >
-          <CircleGraph
-            :amount-questions="amountQuestions"
-            :result="result"
-            @hover-leave="mouseleave()"
-            @hover-over-circle="hoverOverCircle()"
-            @hover-over-result="hoverOverResult()"
+    <div class="flex flex-col justify-between sm:min-h-[calc(100vh-14rem)]">
+      <div class="flex flex-col justify-between md:flex-row">
+        <div class="md:w-1/2">
+          <h3
+            class="mb-7 text-xl font-bold text-custom-gold-light sm:mb-20 sm:text-3xl"
+          >
+            {{ result }} Punkt{{ result === 1 ? '' : 'e' }}!
+          </h3>
+          <h1
+            class="typo-600 max-w-xl sm:leading-15"
+            v-html="completionFeedback.feedback"
           />
+          <p class="typo-400 mt-14 max-w-xl">
+            {{
+              mandelbaerliReceived
+                ? completion.no_manderlbaerli_text
+                : completion.manderlbaerli_text
+            }}
+          </p>
         </div>
-        <div
-          class="typo-400 absolute flex w-full flex-row items-center justify-center text-center text-gold-600"
-        >
-          {{
-            showHoverText ? resultText : `${result}/${amountQuestions} Richtig`
-          }}
+        <div class="relative flex justify-between md:block">
+          <div
+            class="relative -mr-16 w-80 translate-x-[-12.5%] scale-75 pt-8 md:scale-100"
+          >
+            <CircleGraph
+              :amount-questions="amountQuestions"
+              :result="result"
+              @hover-leave="mouseleave()"
+              @hover-over-circle="hoverOverCircle()"
+              @hover-over-result="hoverOverResult()"
+            />
+          </div>
+          <div
+            class="typo-400 absolute flex w-full flex-row items-center justify-center text-center text-gold-600"
+          >
+            {{
+              showHoverText
+                ? resultText
+                : `${result}/${amountQuestions} Richtig`
+            }}
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- FOOTER BUTTONS -->
-    <div class="flex w-full justify-between">
-      <!-- SHOW SOLUTIONS -->
-      <button
-        class="typo-400 mt-16 -ml-3 flex w-min cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light focus-visible:ring"
-        @click="scrollToSolutions($event)"
-      >
-        <p class="whitespace-nowrap">Lösungen anzeigen</p>
-        <ArrowIcon class="w-6 rotate-90 transform text-custom-gold-light" />
-      </button>
+      <!-- FOOTER BUTTONS -->
+      <div class="mb-20 flex w-full justify-between">
+        <!-- SHOW SOLUTIONS -->
+        <button
+          class="typo-400 mt-16 -ml-3 flex w-min cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light focus-visible:ring"
+          @click="scrollToSolutions($event)"
+        >
+          <p class="whitespace-nowrap">Lösungen anzeigen</p>
+          <ArrowIcon class="w-6 rotate-90 transform text-custom-gold-light" />
+        </button>
 
-      <!-- AGAIN -->
-      <NextButton @click.native="$store.commit('SET_INDEX', 0)"
-        >Neues Quiz starten</NextButton
-      >
+        <!-- AGAIN -->
+        <NextButton @click.native="$store.commit('SET_INDEX', 0)"
+          >Neues Quiz starten</NextButton
+        >
+      </div>
     </div>
     <Solutions ref="solutions" class="mt-56" />
     <transition name="grow">

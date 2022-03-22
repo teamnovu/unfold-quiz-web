@@ -8,7 +8,7 @@
           'ring-8 ring-custom-gold-light':
             checkbox.checked && !data.is_illustration,
         }"
-        class="transition-all"
+        class="rounded-lg bg-custom-gray-darkest transition-all"
         @click="onInput(index)"
       >
         <!-- NORMAL IMAGE -->
