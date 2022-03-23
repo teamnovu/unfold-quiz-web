@@ -1,6 +1,6 @@
 <template>
   <QuestionContainer :data="data" @next="checkAnswer()">
-    <div class="grid grid-cols-2 gap-3 sm:gap-8 lg:grid-cols-4">
+    <div class="grid grid-cols-2 gap-3 sm:gap-8 xl:grid-cols-4">
       <button
         v-for="(checkbox, index) in checkboxes"
         :key="index"
@@ -14,14 +14,15 @@
         <!-- NORMAL IMAGE -->
         <div
           v-if="!data.is_illustration"
-          class="relative aspect-9/10 border-2 border-custom-gold-light"
+          class="relative aspect-9/10 h-full w-full border-2 border-custom-gold-light"
         >
-          <img
+          <AppImage
             v-if="checkbox.image"
-            loading="lazy"
-            :src="checkbox.image.permalink"
+            :src="checkbox.image"
             class="h-full w-full object-cover"
+            loading="lazy"
           />
+
           <!-- OVERLAY -->
           <div
             class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm font-bold sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
@@ -36,12 +37,12 @@
           class="relative flex h-full w-full flex-col items-center justify-between rounded-sm p-3 transition-colors md:px-9 md:pt-3 md:pb-5"
           :class="{ 'bg-custom-gold-gradient text-black': checkbox.checked }"
         >
-          <div class="aspect-square">
-            <img
+          <div class="aspect-square h-full w-full">
+            <AppImage
               v-if="checkbox.image"
-              loading="lazy"
-              :src="checkbox.image.permalink"
+              :src="checkbox.image"
               class="h-full w-full object-cover"
+              loading="lazy"
             />
           </div>
 

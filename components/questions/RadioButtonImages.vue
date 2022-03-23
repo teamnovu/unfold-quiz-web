@@ -14,12 +14,12 @@
         <!-- NORMAL IMAGE -->
         <div
           v-if="!data.is_illustration"
-          class="relative aspect-9/10 border-2 border-custom-gold-light"
+          class="relative aspect-9/10 h-full w-full border-2 border-custom-gold-light"
         >
-          <img
+          <AppImage
             v-if="radioButton.image"
             loading="lazy"
-            :src="radioButton.image.permalink"
+            :src="radioButton.image"
             class="h-full w-full object-cover"
           />
           <!-- OVERLAY -->
@@ -36,11 +36,11 @@
           class="relative flex h-full w-full flex-col items-center justify-between rounded-sm px-9 pt-3 pb-5 font-bold transition-colors"
           :class="{ 'bg-custom-gold-gradient text-black': radioButton.checked }"
         >
-          <img
+          <AppImage
             v-if="radioButton.image"
             loading="lazy"
-            :src="radioButton.image.permalink"
-            class=""
+            :src="radioButton.image"
+            class="h-full w-full object-cover"
           />
 
           <div

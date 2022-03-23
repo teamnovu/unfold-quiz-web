@@ -10,12 +10,13 @@
           {{ radioButton.answer }}
         </RadioButton>
         <div
-          class="relative cursor-pointer transition-all"
+          class="relative h-full w-full cursor-pointer transition-all"
           @click="onInput(index)"
         >
-          <img
+          <AppImage
+            v-if="radioButton.image"
             loading="lazy"
-            :src="radioButton.image.permalink"
+            :src="radioButton.image"
             class="h-full w-full object-cover"
           />
         </div>

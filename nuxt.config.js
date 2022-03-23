@@ -28,6 +28,7 @@ export default {
   plugins: [
     '~/plugins/vee-validate.js',
     { src: '~/plugins/vue-confetti.js', mode: 'client' },
+    '~/plugins/vue-cloudinary-image-statamic.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -56,7 +57,12 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@teamnovu/nuxt-cloudinary-image',
   ],
+
+  cloudinaryImage: {
+    cloudinaryBaseUrl: 'https://res.cloudinary.com/unfold-quiz/image/upload/',
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
