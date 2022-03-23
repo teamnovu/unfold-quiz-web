@@ -91,6 +91,8 @@ export default {
 
     completionFeedback() {
       const percentCorrect = (100 / this.amountQuestions) * this.result // Get percent of correct questions
+      if (!this.completion.completion_feedback) return ''
+
       const resultsText = this.completion.completion_feedback.filter(
         (res) => res.point_range >= percentCorrect
       ) // Delete all feedback texts which are below the achieved score
@@ -100,7 +102,7 @@ export default {
         return a.point_range - b.point_range
       })
 
-      return resultsText[0] // Return obj with smallest point range
+      return resultsText[0] || {} // Return obj with smallest point range
     },
 
     index() {

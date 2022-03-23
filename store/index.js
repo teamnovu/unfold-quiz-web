@@ -1,5 +1,5 @@
 export const state = () => ({
-  index: 0,
+  index: localStorage.getItem('index') || 0,
   lastIndex: 0,
   page: {},
   user: {
@@ -9,20 +9,17 @@ export const state = () => ({
     company: '',
     newsletter: false,
   },
-  isSaved: false,
+  isSaved: localStorage.getItem('isSaved'),
   mandelbaerliReceived: false,
 })
 
 export const actions = {
-  async nuxtServerInit({ commit }, { error, $axios }) {
+  async fetchPage({ commit }) {
     let page = {}
     try {
-      page = await $axios.$get('/collections/pages/entries/home')
+      page = await this.$axios.$get('/collections/pages/entries/home')
     } catch (err) {
-      error({
-        statusCode: err.response?.status,
-        message: err.response?.data?.message,
-      })
+      console.log(err)
     }
 
     commit('SET_PAGE', page?.data)
@@ -30,6 +27,7 @@ export const actions = {
 
   async saveResult({ state, getters, rootGetters, commit }) {
     if (state.isSaved) return
+
     const mandelbaerliReceived =
       (100 / getters.questions.length) * rootGetters['solutions/result'] >
       state.page.min_result_for_mandelbaerli
@@ -72,20 +70,33 @@ export const mutations = {
   SET_PAGE(state, page) {
     state.page = page || {}
   },
+
   SET_INDEX(state, index) {
     state.lastIndex = state.index
     state.index = index
     localStorage.setItem('index', index)
   },
+
   SET_USER(state, user) {
     state.user = user
+    localStorage.setItem('user', JSON.stringify(user))
   },
+
+  LOAD_USER(state) {
+    const user = JSON.parse(localStorage.getItem('user'))
+    if (!user) return
+    state.user = user
+  },
+
   SET_SAVED(state, bool) {
     state.isSaved = bool
+    localStorage.setItem('isSaved', true)
   },
+
   SET_MANDELBAERLI_RECEIVED(state, bool) {
     state.mandelbaerliReceived = bool
   },
+
   RESET(state) {
     state.isSaved = false
     state.user = {
@@ -95,44 +106,55 @@ export const mutations = {
       company: '',
       newsletter: false,
     }
+    localStorage.removeItem('isSaved')
+    localStorage.removeItem('user')
   },
 }
 
 export const getters = {
   index: (state) => {
-    return state.index
+    return parseInt(state.index)
   },
+
   direction: (state) => {
     return state.index > state.lastIndex ? 'next' : 'prev'
   },
+
   page: (state) => {
     return state.page
   },
+
   user: (state) => {
     return state.user
   },
+
   home: (state) => {
     return { main_title: state.page.main_title }
   },
+
   register: (state) => {
     return {
       register_title: state.page.register_title,
       checkbox_text: state.page.register_checkbox_text,
     }
   },
+
   questions: (state) => {
-    return state.page.components
+    return state.page.components || []
   },
+
   completion: (state) => {
     return {
-      completion_feedback: state.page.completion_feedback,
+      completion_feedback: state.page.completion_feedback || [],
       mandelbaerli_text: state.page.completion_mandelbaerli_text,
       no_manderlbaerli_text: state.page.completion_no_mandelbaerli_text,
     }
   },
+
   history: (state) => {
     return state.history
   },
+
   mandelbaerliReceived: (state) => {
     return state.mandelbaerliReceived
   },

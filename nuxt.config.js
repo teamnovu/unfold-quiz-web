@@ -1,6 +1,7 @@
 const path = require('path')
 
 export default {
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Unfold Quiz | Novu',

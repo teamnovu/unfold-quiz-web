@@ -36,10 +36,18 @@ export const mutations = {
     }
 
     state.solutions = solutions
+    localStorage.setItem('solutions', JSON.stringify(solutions))
+  },
+
+  LOAD_SOLUTIONS(state) {
+    const solutions = JSON.parse(localStorage.getItem('solutions'))
+    if (!solutions) return
+    state.solutions = solutions
   },
 
   RESET(state) {
     state.solutions = []
+    localStorage.removeItem('solutions')
   },
 }
 

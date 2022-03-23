@@ -78,6 +78,10 @@ export default {
     },
   },
 
+  beforeMount() {
+    this.$store.commit('LOAD_USER')
+  },
+
   async mounted() {
     const user = this.$store.getters.user
     this.user = { ...user }
