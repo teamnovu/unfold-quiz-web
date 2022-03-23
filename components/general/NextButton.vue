@@ -15,9 +15,7 @@
         class="absolute inset-0 rounded-full bg-custom-gold-light shadow-inner-right shadow-custom-gold transition-all ease-in-out group-hover:scale-110 group-hover:bg-custom-gold"
       />
       <!-- ARROW -->
-      <div
-        class="absolute inset-0 transition-transform ease-in-out group-hover:translate-x-2"
-      >
+      <div class="absolute inset-0">
         <ArrowIcon
           class="absolute left-1/2 top-1/2 w-4 -translate-x-1/2 -translate-y-1/2 text-black sm:w-7"
         />

@@ -4,12 +4,18 @@
     // TEXT
     .typo-400 {
         @apply text-base leading-5;
-        @apply sm:leading-9 sm:text-3xl ;
+        @apply sm:text-lg sm:leading-6;
+        @apply md:text-xl md:leading-7;
+        @apply lg:text-2xl lg:leading-8;
+        @apply xl:text-3xl xl:leading-9;
     }
 
     .typo-600 {
         @apply text-2xl leading-7;
-        @apply sm:leading-tight sm:text-6xl;
+        @apply sm:text-3xl sm:leading-9;
+        @apply md:text-4xl md:leading-10;
+        @apply lg:text-5xl lg:leading-15;
+        @apply xl:text-6xl xl:leading-15;
     }
 
 }

@@ -4,29 +4,40 @@
       <button
         v-for="(radioButton, index) in radioButtons"
         :key="index"
-        :class="{
-          'ring-4 ring-custom-gold-light':
-            radioButton.checked && !data.is_illustration,
-        }"
-        class="transition-all"
+        :class="[
+          {
+            'ring-4 ring-custom-gold-light':
+              radioButton.checked && !data.is_illustration,
+          },
+          {
+            'bg-custom-gray-darker':
+              radioButton.checked && data.is_illustration,
+          },
+        ]"
+        class="group rounded-lg bg-custom-gray-darkest transition-all hover:bg-custom-gray-darker"
         @click="onInput(index)"
       >
         <!-- NORMAL IMAGE -->
         <div
           v-if="!data.is_illustration"
-          class="relative aspect-9/10 h-full w-full border-2 border-custom-gold-light"
+          class="relative aspect-9/10 h-full w-full overflow-hidden border-2 border-custom-gold-light"
         >
           <AppImage
             v-if="radioButton.image"
             loading="lazy"
             :src="radioButton.image"
-            class="h-full w-full object-cover"
+            class="h-full w-full object-cover transition-transform group-hover:scale-110"
+            :class="{
+              'scale-110': radioButton.checked,
+            }"
           />
           <!-- OVERLAY -->
           <div
-            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm font-bold uppercase sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
+            class="typo-400 absolute left-2 bottom-2 w-full pr-2 text-left font-semibold tracking-wider sm:left-5 sm:bottom-5 sm:pr-5"
           >
-            {{ radioButton.overlayText }}
+            <span class="text:sm w-full md:text-xl" style="hyphens: auto">{{
+              radioButton.overlayText
+            }}</span>
           </div>
         </div>
 
@@ -44,10 +55,11 @@
           />
 
           <div
-            class="typo-400 text-left text-sm tracking-wide sm:left-5"
-            style="hyphens: auto"
+            class="typo-400 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
           >
-            {{ radioButton.overlayText }}
+            <span style="hyphens: auto" class="text:sm w-full md:text-xl">{{
+              radioButton.overlayText
+            }}</span>
           </div>
         </div>
       </button>

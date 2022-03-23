@@ -1,7 +1,11 @@
 <template>
   <QuestionContainer :data="data" @next="checkAnswer()">
     <div class="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-14">
-      <div v-for="(radioButton, index) in radioButtons" :key="index">
+      <div
+        v-for="(radioButton, index) in radioButtons"
+        :key="index"
+        class="group"
+      >
         <RadioButton
           :value="radioButton.checked"
           class="min-h-[4rem] space-x-5 rounded-full py-4 sm:min-h-[5rem]"
@@ -10,14 +14,17 @@
           {{ radioButton.answer }}
         </RadioButton>
         <div
-          class="relative h-full w-full cursor-pointer transition-all"
+          class="relative h-full w-full cursor-pointer overflow-hidden transition-all"
           @click="onInput(index)"
         >
           <AppImage
             v-if="radioButton.image"
             loading="lazy"
             :src="radioButton.image"
-            class="h-full w-full object-cover"
+            class="h-full w-full object-cover transition-transform group-hover:scale-105"
+            :class="{
+              'scale-105': radioButton.checked,
+            }"
           />
         </div>
       </div>

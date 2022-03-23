@@ -4,30 +4,40 @@
       <button
         v-for="(checkbox, index) in checkboxes"
         :key="index"
-        :class="{
-          'ring-8 ring-custom-gold-light':
-            checkbox.checked && !data.is_illustration,
-        }"
-        class="rounded-lg bg-custom-gray-darkest transition-all"
+        :class="[
+          {
+            'ring-4 ring-custom-gold-light':
+              checkbox.checked && !data.is_illustration,
+          },
+          {
+            'bg-custom-gray-darker': checkbox.checked && data.is_illustration,
+          },
+        ]"
+        class="group rounded-lg bg-custom-gray-darkest transition-all hover:bg-custom-gray-darker"
         @click="onInput(index)"
       >
         <!-- NORMAL IMAGE -->
         <div
           v-if="!data.is_illustration"
-          class="relative aspect-9/10 h-full w-full border-2 border-custom-gold-light"
+          class="relative aspect-9/10 h-full w-full overflow-hidden border-2 border-custom-gold-light"
         >
           <AppImage
             v-if="checkbox.image"
             :src="checkbox.image"
-            class="h-full w-full object-cover"
+            class="h-full w-full object-cover transition-transform group-hover:scale-110"
             loading="lazy"
+            :class="{
+              'scale-110': checkbox.checked,
+            }"
           />
 
           <!-- OVERLAY -->
           <div
-            class="typo-400 absolute left-2 bottom-2 pr-2 text-left text-sm font-bold sm:left-5 sm:bottom-5 sm:pr-5 sm:text-xl"
+            class="typo-400 absolute left-2 bottom-2 w-full pr-2 text-left font-semibold tracking-wider sm:left-5 sm:bottom-5 sm:pr-5"
           >
-            {{ checkbox.overlayText }}
+            <span class="text:sm w-full md:text-xl" style="hyphens: auto">{{
+              checkbox.overlayText
+            }}</span>
           </div>
         </div>
 
@@ -47,10 +57,11 @@
           </div>
 
           <div
-            class="typo-400 text-left uppercase sm:left-5"
-            style="hyphens: auto"
+            class="typo-400 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
           >
-            <span class="text-sm sm:text-xl">{{ checkbox.overlayText }}</span>
+            <span style="hyphens: auto" class="text:sm w-full md:text-xl">
+              {{ checkbox.overlayText }}
+            </span>
           </div>
         </div>
       </button>
