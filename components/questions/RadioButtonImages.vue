@@ -31,10 +31,12 @@
               'scale-110': radioButton.checked,
             }"
           />
+          <!-- GRADIENT -->
+          <div class="checkbox-images-gradient absolute inset-0" />
           <!-- OVERLAY -->
           <div
-            class="typo-300 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
             style="hyphens: auto"
+            class="typo-300 absolute left-2 bottom-2 right-2 text-left font-semibold uppercase tracking-wider sm:left-5 sm:bottom-5 sm:right-5"
           >
             {{ radioButton.overlayText }}
           </div>
@@ -52,12 +54,16 @@
             :src="radioButton.image"
             class="h-full w-full object-contain"
           />
-          <!-- OVERLAY -->
+
           <div
-            class="typo-300 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
-            style="hyphens: auto"
+            class="typo-400 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
           >
-            {{ radioButton.overlayText }}
+            <span
+              class="text:sm w-full !leading-none md:text-xl"
+              style="hyphens: auto"
+            >
+              {{ radioButton.overlayText }}
+            </span>
           </div>
         </div>
       </button>

@@ -30,14 +30,17 @@
               'scale-110': checkbox.checked,
             }"
           />
-
+          <!-- GRADIENT -->
+          <div class="checkbox-images-gradient absolute inset-0" />
           <!-- OVERLAY -->
           <div
-            class="typo-300 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
             style="hyphens: auto"
+            class="typo-300 absolute left-2 bottom-2 right-2 text-left font-semibold uppercase tracking-wider sm:left-5 sm:bottom-5 sm:right-5"
           >
             {{ checkbox.overlayText }}
           </div>
+          <!-- GRADIENT -->
+          <div class="gradient absolute inset-0" />
         </div>
 
         <!-- ILLUSTRATION -->
@@ -56,7 +59,7 @@
           </div>
           <!-- OVERLAY -->
           <div
-            class="typo-300 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
+            class="typo-300 absolute w-full text-left font-semibold uppercase tracking-wider sm:left-5"
             style="hyphens: auto"
           >
             {{ checkbox.overlayText }}
