@@ -3,11 +3,11 @@
     <div class="grid gap-3 sm:gap-5">
       <RadioButton
         v-for="(radioButton, index) in radioButtons"
-        :id="`radio-button-${index}`"
+        :id="`radioButton-${index}`"
         :key="index"
         :value="radioButton.checked"
         :disabled="checkForFlee(index) && isFleeing"
-        class="relative min-h-[4rem] space-x-5 rounded-[3rem] bg-white bg-opacity-15 px-6 py-4 pr-12 transition-all hover:bg-opacity-25 sm:min-h-[5rem] sm:pr-16"
+        class="relative min-h-[4rem] space-x-5 bg-white bg-opacity-15 px-6 py-4 pr-12 transition-all hover:bg-opacity-25 sm:min-h-[5rem] sm:pr-16"
         :class="{
           'bg-opacity-25': radioButton.checked,
         }"
@@ -49,6 +49,8 @@ export default {
   },
 
   mounted() {
+    window.addEventListener('resize', this.calculateBorderRadius)
+    this.calculateBorderRadius()
     if (!this.data.radio_buttons) return
     this.data.radio_buttons.forEach((radioButton) => {
       this.radioButtons.push({
@@ -58,19 +60,23 @@ export default {
     })
   },
 
+  unmounted() {
+    window.removeEventListener('resize', this.calculateBorderRadius)
+  },
+
   methods: {
     flee(index) {
       if (!this.checkForFlee(index)) return
-      const checkbox = document.getElementById(`radio-button-${index}`)
-      let width = checkbox.offsetWidth
-      let length = checkbox.offsetHeight
+      const radioButton = document.getElementById(`radioButton-${index}`)
+      let width = radioButton.offsetWidth
+      let length = radioButton.offsetHeight
       if (!this.isFleeing) width = width / 3
       if (!this.isFleeing) length = length / 3
       const x = Math.round(Math.random() * (length - -length) + -length)
       const y = Math.round(Math.random() * (width - -width) + -width)
-      checkbox.style.transform = `translate(${x}px, ${y}px)`
-      checkbox.style.backgroundColor = '#2b2b2b'
-      checkbox.style.zIndex = '100'
+      radioButton.style.transform = `translate(${x}px, ${y}px)`
+      radioButton.style.backgroundColor = '#2b2b2b'
+      radioButton.style.zIndex = '100'
     },
 
     checkForFlee(index) {
@@ -136,6 +142,21 @@ export default {
       } else {
         return radioButton.answer_incorrect_text || this.data.answer_incorrect
       }
+    },
+
+    async calculateBorderRadius() {
+      // based on element height
+      await this.$nextTick()
+      if (!this.radioButtons && !this.radioButtons.length) return
+      this.radioButtons.forEach((radioButton, index) => {
+        const element = document.getElementById(`radioButton-${index}`)
+        if (!element) return
+        if (element.clientHeight > 90) {
+          element.style.borderRadius = '1.5rem'
+        } else {
+          element.style.borderRadius = '9999px'
+        }
+      })
     },
   },
 }
