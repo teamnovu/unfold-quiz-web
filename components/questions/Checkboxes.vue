@@ -37,35 +37,30 @@ export default {
     }
   },
 
-  watch: {
-    async screenWidth() {
-      await this.$nextTick()
-
-      this.checkboxes.forEach((checkbox, index) => {
-        console.log(this.$refs[`checkbox-${index}`].clientWidth)
-        const element = this.$refs[`checkbox-${index}`][0].$el
-        if (!element) return
-        const width = element.clientWidth
-        const stringLength = element.textContent.length
-        const proportion = width / stringLength
-        if (proportion > 9) {
-          element.style.borderRadius = '2rem'
-        }
-        console.log(width, stringLength, proportion)
-      })
-    },
-  },
-
   mounted() {
     window.addEventListener('resize', this.calculateBorderRadius)
     this.calculateBorderRadius()
+
     if (!this.data.checkboxes) return
-    this.data.checkboxes.forEach((checkbox) => {
-      this.checkboxes.push({
-        answer: checkbox.answer,
-        checked: false,
+
+    // restore answers
+    const storedAnswers = this.$store.getters['solutions/storedAnswer'](
+      this.questionIndex
+    )
+    if (
+      storedAnswers &&
+      storedAnswers.length &&
+      storedAnswers.length === this.data.checkboxes.length
+    ) {
+      this.checkboxes = storedAnswers
+    } else {
+      this.data.checkboxes.forEach((checkbox) => {
+        this.checkboxes.push({
+          answer: checkbox.answer,
+          checked: false,
+        })
       })
-    })
+    }
   },
 
   unmounted() {
@@ -73,10 +68,6 @@ export default {
   },
 
   methods: {
-    getScreenWidth() {
-      this.screenWidth = document.documentElement.clientWidth
-    },
-
     onInput(index, $event) {
       this.checkboxes.forEach((checkbox, i) => {
         if (i === index) {
@@ -108,6 +99,7 @@ export default {
         correct,
         answer,
         questionIndex: this.questionIndex,
+        storedAnswers: this.checkboxes,
       })
     },
 

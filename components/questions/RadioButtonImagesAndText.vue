@@ -13,19 +13,21 @@
         >
           {{ radioButton.answer }}
         </RadioButton>
-        <div
-          class="relative h-full w-full cursor-pointer overflow-hidden transition-all"
-          @click="onInput(index)"
-        >
-          <AppImage
-            v-if="radioButton.image"
-            loading="lazy"
-            :src="radioButton.image"
-            class="h-full w-full object-contain transition-transform group-hover:scale-105"
-            :class="{
-              'scale-105': radioButton.checked,
-            }"
-          />
+        <div class="rounded">
+          <div
+            class="relative h-full w-full cursor-pointer overflow-hidden transition-all"
+            @click="onInput(index)"
+          >
+            <AppImage
+              v-if="radioButton.image"
+              loading="lazy"
+              :src="radioButton.image"
+              class="h-full w-full object-contain transition-transform group-hover:scale-105"
+              :class="{
+                'scale-105': radioButton.checked,
+              }"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -54,13 +56,28 @@ export default {
 
   mounted() {
     if (!this.data.radio_buttons) return
-    this.data.radio_buttons.forEach((radioButton) => {
-      this.radioButtons.push({
-        answer: radioButton.answer,
-        image: radioButton.image,
-        checked: false,
+
+    // restore answers
+    const storedAnswers = this.$store.getters['solutions/storedAnswer'](
+      this.questionIndex
+    )
+
+    if (
+      storedAnswers &&
+      storedAnswers.length &&
+      storedAnswers.length === this.data.radio_buttons.length
+    ) {
+      this.radioButtons = storedAnswers
+      console.log(storedAnswers)
+    } else {
+      this.data.radio_buttons.forEach((radioButton) => {
+        this.radioButtons.push({
+          answer: radioButton.answer,
+          image: radioButton.image,
+          checked: false,
+        })
       })
-    })
+    }
   },
 
   methods: {
@@ -100,6 +117,7 @@ export default {
         correct,
         answer,
         questionIndex: this.questionIndex,
+        storedAnswers: this.radioButtons,
       })
     },
 

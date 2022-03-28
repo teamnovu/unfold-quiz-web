@@ -89,13 +89,28 @@ export default {
 
   mounted() {
     if (!this.data.radio_buttons) return
-    this.data.radio_buttons.forEach((radioButton) => {
-      this.radioButtons.push({
-        image: radioButton.image,
-        overlayText: radioButton.image_overlay_text,
-        checked: false,
+
+    // restore answers
+    const storedAnswers = this.$store.getters['solutions/storedAnswer'](
+      this.questionIndex
+    )
+
+    if (
+      storedAnswers &&
+      storedAnswers.length &&
+      storedAnswers.length === this.data.radio_buttons.length
+    ) {
+      this.radioButtons = storedAnswers
+      console.log(storedAnswers)
+    } else {
+      this.data.radio_buttons.forEach((radioButton) => {
+        this.radioButtons.push({
+          image: radioButton.image,
+          overlayText: radioButton.image_overlay_text,
+          checked: false,
+        })
       })
-    })
+    }
   },
 
   methods: {
@@ -135,6 +150,7 @@ export default {
         correct,
         answer,
         questionIndex: this.questionIndex,
+        storedAnswers: this.radioButtons,
       })
     },
 

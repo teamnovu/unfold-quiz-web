@@ -92,14 +92,29 @@ export default {
 
   mounted() {
     if (!this.data.checkboxes) return
-    this.data.checkboxes.forEach((checkbox) => {
-      this.checkboxes.push({
-        answer: checkbox.answer,
-        checked: false,
-        image: checkbox.image,
-        overlayText: checkbox.image_overlay_text,
+
+    // restore answers
+    const storedAnswers = this.$store.getters['solutions/storedAnswer'](
+      this.questionIndex
+    )
+    if (
+      storedAnswers &&
+      storedAnswers.length &&
+      storedAnswers.length === this.data.checkboxes.length
+    ) {
+      this.checkboxes = storedAnswers
+      console.log(storedAnswers)
+    } else {
+      // set new answers
+      this.data.checkboxes.forEach((checkbox) => {
+        this.checkboxes.push({
+          answer: checkbox.answer,
+          checked: false,
+          image: checkbox.image,
+          overlayText: checkbox.image_overlay_text,
+        })
       })
-    })
+    }
   },
 
   methods: {
@@ -134,6 +149,7 @@ export default {
         correct,
         answer,
         questionIndex: this.questionIndex,
+        storedAnswers: this.checkboxes,
       })
     },
   },

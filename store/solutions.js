@@ -16,6 +16,7 @@ export const actions = {
       question: questionText,
       correct: payload.correct,
       answer: payload.answer,
+      storedAnswers: payload.storedAnswers,
     }
 
     commit('SET_ANSWER', answer)
@@ -35,7 +36,7 @@ export const mutations = {
       solutions[index] = answer
     }
 
-    state.solutions = solutions
+    state.solutions = JSON.parse(JSON.stringify(solutions))
     localStorage.setItem('solutions', JSON.stringify(solutions))
   },
 
@@ -54,6 +55,12 @@ export const mutations = {
 export const getters = {
   solutions: (state) => {
     return state.solutions
+  },
+
+  storedAnswer: (state) => (questionIndex) => {
+    const storedAnswers = state.solutions[questionIndex]?.storedAnswers
+    if (!storedAnswers) return []
+    return JSON.parse(JSON.stringify(storedAnswers))
   },
 
   result: (state) => {

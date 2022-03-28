@@ -51,13 +51,26 @@ export default {
   mounted() {
     window.addEventListener('resize', this.calculateBorderRadius)
     this.calculateBorderRadius()
+
     if (!this.data.radio_buttons) return
-    this.data.radio_buttons.forEach((radioButton) => {
-      this.radioButtons.push({
-        answer: radioButton.answer,
-        checked: false,
+    // restore answers
+    const storedAnswers = this.$store.getters['solutions/storedAnswer'](
+      this.questionIndex
+    )
+    if (
+      storedAnswers &&
+      storedAnswers.length &&
+      storedAnswers.length === this.data.radio_buttons.length
+    ) {
+      this.radioButtons = storedAnswers
+      console.log(storedAnswers)
+    } else
+      this.data.radio_buttons.forEach((radioButton) => {
+        this.radioButtons.push({
+          answer: radioButton.answer,
+          checked: false,
+        })
       })
-    })
   },
 
   unmounted() {
@@ -125,6 +138,7 @@ export default {
         correct,
         answer,
         questionIndex: this.questionIndex,
+        storedAnswers: this.radioButtons,
       })
     },
 
