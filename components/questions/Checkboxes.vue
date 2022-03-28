@@ -115,13 +115,22 @@ export default {
       // based on element height
       await this.$nextTick()
       if (!this.checkboxes && !this.checkboxes.length) return
+      let roundedFull = true
       this.checkboxes.forEach((checkbox, index) => {
         const element = document.getElementById(`checkbox-${index}`)
         if (!element) return
         if (element.clientHeight > 90) {
-          element.style.borderRadius = '1.5rem'
-        } else {
+          roundedFull = false
+        }
+      })
+      this.checkboxes.forEach((checkbox, index) => {
+        const element = document.getElementById(`checkbox-${index}`)
+        if (!element) return
+        if (roundedFull) {
           element.style.borderRadius = '9999px'
+        } else {
+          element.style.borderRadius =
+            document.documentElement.clientWidth > 640 ? '1.5rem' : '0.75rem'
         }
       })
     },

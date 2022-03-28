@@ -148,13 +148,22 @@ export default {
       // based on element height
       await this.$nextTick()
       if (!this.radioButtons && !this.radioButtons.length) return
+      let roundedFull = true
       this.radioButtons.forEach((radioButton, index) => {
         const element = document.getElementById(`radioButton-${index}`)
         if (!element) return
         if (element.clientHeight > 90) {
-          element.style.borderRadius = '1.5rem'
-        } else {
+          roundedFull = false
+        }
+      })
+      this.radioButtons.forEach((radioButton, index) => {
+        const element = document.getElementById(`radioButton-${index}`)
+        if (!element) return
+        if (roundedFull) {
           element.style.borderRadius = '9999px'
+        } else {
+          element.style.borderRadius =
+            document.documentElement.clientWidth > 640 ? '1.5rem' : '0.75rem'
         }
       })
     },
