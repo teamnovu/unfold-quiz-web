@@ -103,7 +103,6 @@ export default {
       storedAnswers.length === this.data.checkboxes.length
     ) {
       this.checkboxes = storedAnswers
-      console.log(storedAnswers)
     } else {
       // set new answers
       this.data.checkboxes.forEach((checkbox) => {

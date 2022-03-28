@@ -101,7 +101,6 @@ export default {
       storedAnswers.length === this.data.radio_buttons.length
     ) {
       this.radioButtons = storedAnswers
-      console.log(storedAnswers)
     } else {
       this.data.radio_buttons.forEach((radioButton) => {
         this.radioButtons.push({

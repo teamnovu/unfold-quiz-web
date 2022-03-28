@@ -148,13 +148,11 @@ export default {
     hoverOverCircle() {
       this.showHoverText = true
       this.resultText = `${this.amountQuestions} Fragen falsch Beantwortet`
-      console.log('circle')
     },
 
     hoverOverResult() {
       this.showHoverText = true
       this.resultText = `${this.result} Fragen richtig Beantwortet`
-      console.log('result')
     },
 
     mouseleave() {
