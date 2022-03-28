@@ -9,6 +9,7 @@
         @apply lg:text-xl lg:leading-7;
     }
 
+
     .typo-400 {
         @apply text-base leading-5;
         @apply sm:text-lg sm:leading-6;
@@ -21,8 +22,16 @@
         @apply text-2xl leading-7;
         @apply sm:text-3xl sm:leading-9;
         @apply md:text-4xl md:leading-10;
-        @apply lg:text-5xl lg:leading-15;
-        @apply xl:text-6xl xl:leading-15;
+        @apply lg:text-5xl lg:leading-12;
+        @apply xl:text-[3.5rem] xl:leading-14; //56px
+    }
+
+    // home title
+    .typo-700 {
+        @apply text-3xl leading-9;
+        @apply md:text-4xl md:leading-11;
+        @apply lg:text-5xl lg:leading-13;
+        @apply xl:text-6xl xl:leading-16;
     }
 
 }
