@@ -33,11 +33,10 @@
           />
           <!-- OVERLAY -->
           <div
-            class="typo-400 absolute left-2 bottom-2 w-full pr-2 text-left font-semibold tracking-wider sm:left-5 sm:bottom-5 sm:pr-5"
+            class="typo-300 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
+            style="hyphens: auto"
           >
-            <span class="text:sm w-full md:text-xl" style="hyphens: auto">{{
-              radioButton.overlayText
-            }}</span>
+            {{ radioButton.overlayText }}
           </div>
         </div>
 
@@ -51,15 +50,14 @@
             v-if="radioButton.image"
             loading="lazy"
             :src="radioButton.image"
-            class="h-full w-full object-cover"
+            class="h-full w-full object-contain"
           />
-
+          <!-- OVERLAY -->
           <div
-            class="typo-400 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
+            class="typo-300 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
+            style="hyphens: auto"
           >
-            <span style="hyphens: auto" class="text:sm w-full md:text-xl">{{
-              radioButton.overlayText
-            }}</span>
+            {{ radioButton.overlayText }}
           </div>
         </div>
       </button>

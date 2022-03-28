@@ -2,6 +2,13 @@
 @layer utilities {
 
     // TEXT
+    .typo-300 {
+        @apply text-sm leading-4;
+        @apply sm:text-base sm:leading-5;
+        @apply md:text-lg md:leading-6;
+        @apply lg:text-xl lg:leading-7;
+    }
+
     .typo-400 {
         @apply text-base leading-5;
         @apply sm:text-lg sm:leading-6;
