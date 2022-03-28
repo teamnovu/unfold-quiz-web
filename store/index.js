@@ -25,12 +25,11 @@ export const actions = {
     commit('SET_PAGE', page?.data)
   },
 
-  async saveResult({ state, getters, rootGetters, commit }) {
+  async saveResult(
+    { state, getters, rootGetters, commit },
+    mandelbaerliReceived
+  ) {
     if (state.isSaved) return
-
-    const mandelbaerliReceived =
-      (100 / getters.questions.length) * rootGetters['solutions/result'] >
-      state.page.min_result_for_mandelbaerli
 
     const payload = {
       user: state.user,
@@ -146,13 +145,17 @@ export const getters = {
   completion: (state) => {
     return {
       completion_feedback: state.page.completion_feedback || [],
-      mandelbaerli_text: state.page.completion_mandelbaerli_text,
-      no_manderlbaerli_text: state.page.completion_no_mandelbaerli_text,
+      mandelbaerli_text: state.page.mandelbaerli_text,
+      no_mandelbaerli_text: state.page.no_mandelbaerli_text,
     }
   },
 
   history: (state) => {
     return state.history
+  },
+
+  minPointsForMandelbaerli(state) {
+    return state.page.min_result_for_mandelbaerli || 100
   },
 
   mandelbaerliReceived: (state) => {
