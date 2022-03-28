@@ -59,7 +59,7 @@
           </div>
           <!-- OVERLAY -->
           <div
-            class="typo-300 absolute w-full text-left font-semibold uppercase tracking-wider sm:left-5"
+            class="typo-300 w-full text-left font-semibold uppercase tracking-wider"
             style="hyphens: auto"
           >
             {{ checkbox.overlayText }}

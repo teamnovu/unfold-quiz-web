@@ -56,14 +56,10 @@
           />
 
           <div
-            class="typo-400 w-full text-left font-semibold uppercase tracking-wider sm:left-5"
+            class="typo-300 w-full text-left font-semibold uppercase tracking-wider"
+            style="hyphens: auto"
           >
-            <span
-              class="text:sm w-full !leading-none md:text-xl"
-              style="hyphens: auto"
-            >
-              {{ radioButton.overlayText }}
-            </span>
+            {{ radioButton.overlayText }}
           </div>
         </div>
       </button>

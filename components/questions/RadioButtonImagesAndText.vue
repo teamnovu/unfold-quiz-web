@@ -21,7 +21,7 @@
             v-if="radioButton.image"
             loading="lazy"
             :src="radioButton.image"
-            class="h-full w-full object-cover transition-transform group-hover:scale-105"
+            class="h-full w-full object-contain transition-transform group-hover:scale-105"
             :class="{
               'scale-105': radioButton.checked,
             }"
