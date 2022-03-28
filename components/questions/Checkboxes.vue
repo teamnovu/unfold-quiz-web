@@ -4,10 +4,12 @@
       <Checkbox
         v-for="(checkbox, index) in checkboxes"
         :id="`checkbox-${index}`"
+        :ref="`checkbox-${index}`"
         :key="index"
         :value="checkbox.checked"
-        class="typo-400 min-h-[4rem] w-auto space-x-5 rounded-full bg-white bg-opacity-15 px-6 py-4 pr-12 transition-colors hover:bg-opacity-25 sm:min-h-[5rem] sm:pr-16"
+        class="typo-400 min-h-[4rem] w-auto space-x-5 rounded-full bg-white bg-opacity-15 px-6 py-4 pr-12 transition-colors sm:min-h-[5rem] sm:pr-16 lg:hover:bg-opacity-25"
         :class="{ 'bg-opacity-25': checkbox.checked }"
+        @click="blur()"
         @input="onInput(index, $event)"
       >
         {{ checkbox.answer }}
