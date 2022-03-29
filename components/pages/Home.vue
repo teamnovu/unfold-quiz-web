@@ -17,7 +17,7 @@
         </div>
         <!-- START BUTTON -->
         <button
-          class="typo-400 group -ml-3 flex h-min w-min items-center space-x-5 rounded-full p-1 pl-3 lg:justify-end"
+          class="typo-400 group -ml-3 flex h-min w-min items-center space-x-5 rounded-full p-1 pl-3 lg:justify-end lg:mt-12"
           @click="$store.commit('SET_INDEX', 1)"
         >
           <span
