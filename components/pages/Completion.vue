@@ -124,8 +124,8 @@ export default {
     await this.$nextTick()
     if (this.checkIfCrying()) {
       this.startCrying()
-    } else {
-
+    }
+    if( this.$store.getters.minPointsForMandelbaerli <= this.percentCorrect) {
       this.startConfetti()
     }
   },
