@@ -40,7 +40,7 @@
     </div>
 
     <!-- IMPRINT -->
-    <div class="absolute bottom-16 -left-24 sm:-left-48">
+    <div class="absolute bottom-16 -left-24 -z-10 sm:-left-48">
       <Imprint />
     </div>
   </div>

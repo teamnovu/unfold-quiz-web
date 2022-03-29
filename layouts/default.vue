@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen">
+  <div class="relative min-h-screen screen-outiline ">
     <!-- HEADER -->
     <div
       class="absolute inset-x-9 top-9 flex items-center justify-between sm:left-28 sm:right-40 sm:top-24"
@@ -15,10 +15,17 @@
       </transition>
     </div>
     <!-- NUXT -->
-    <Nuxt class="inset-0 border-4 border-custom-gold-light sm:border-0;"/>
+      <Nuxt class="relative"/>  
     <!-- BORDER -->
     <div
       class="pointer-events-none fixed inset-0 border-0 border-custom-gold-light sm:border-6"
     />
   </div>
 </template>
+
+
+<style scoped>
+.screen-outiline {
+box-shadow: inset 0px 0px 0px 4px rgb(235 223 183);
+}
+</style>
