@@ -1,8 +1,8 @@
 <template>
   <Container class="flex min-h-screen flex-col justify-between">
     <div class="flex flex-col justify-between sm:min-h-[calc(100vh-14rem)]">
-      <div class="flex flex-col justify-between md:flex-row">
-        <div class="md:w-1/2">
+      <div class="md:grid md:grid-cols-3 ">
+        <div class="col-span-2">
           <h3
             class="mb-7 text-xl font-bold text-custom-gold-light sm:mb-20 sm:text-3xl"
           >
@@ -20,20 +20,19 @@
             }}
           </p>
         </div>
-        <div class="relative flex justify-between md:block">
+        <div class="relative  flex flex-row md:flex-col justify-between md:block">
           <div
-            class="relative -mr-16 w-80 translate-x-[-12.5%] scale-75 pt-8 md:scale-100"
+            class=" w-full  mt-11"
           >
             <CircleGraph
-              :amount-questions="amountQuestions"
-              :result="result"
+              :values="values"
               @hover-leave="mouseleave()"
               @hover-over-circle="hoverOverCircle()"
               @hover-over-result="hoverOverResult()"
             />
           </div>
           <div
-            class="typo-400 absolute flex w-full flex-row items-center justify-center text-center text-gold-600"
+            class="text-2xl text-3xl flex w-full flex-row items-center justify-center text-center text-gold-600 "
           >
             {{
               showHoverText
@@ -77,6 +76,9 @@ export default {
   }),
 
   computed: {
+    values() {
+      return [100, this.percentCorrect]
+    },
     completion() {
       return this.$store.getters.completion
     },
@@ -123,6 +125,7 @@ export default {
     if (this.checkIfCrying()) {
       this.startCrying()
     } else {
+
       this.startConfetti()
     }
   },

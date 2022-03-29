@@ -1,176 +1,154 @@
 <template>
   <div>
-    <div class="absolute w-full">
-      <div
-        v-if="showResult"
-        class="pointer-events-none absolute z-50 ml-[-5%] mt-[20%] cursor-pointer rounded-sm bg-white px-4 py-2 pr-6 text-black shadow-lg before:absolute before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:h-3 before:w-3 before:rotate-45 before:bg-white"
-      >
-        <span class="font-semibold">Falsch</span>
-        <div class="text-custom-gray-dark">
-          {{ round((100 / amountQuestions) * (amountQuestions - result)) }}%
-        </div>
-      </div>
-      <div
-        class="gradient aspect-square h-full w-full rounded-full"
-        @click="clickResult()"
-        @mouseenter="clickResult()"
-        @mouseleave="reset()"
-      />
-    </div>
-    <div class="pointer-events-none -translate-x-4 -translate-y-4">
-      <div
-        v-if="showCorrect"
-        class="pointer-events-none absolute z-50 ml-[40%] rounded-sm bg-white px-4 py-2 pr-6 text-black shadow-lg before:absolute before:left-1/2 before:-bottom-1.5 before:-ml-1.5 before:h-3 before:w-3 before:rotate-45 before:bg-white"
-      >
-        <span class="font-semibold">Richtig</span>
-        <div class="text-custom-gray-dark">
-          {{ round((100 / amountQuestions) * result) }}%
-        </div>
-      </div>
-      <ul class="sliceWrapper group">
-        <li
-          v-for="(question, index) in questionsCorect"
-          :key="index"
-          class="pointer-events-auto z-30 transition-all first-of-type:z-[29] first-of-type:shadow-lg last-of-type:z-[29] last-of-type:shadow-lg group-hover:first-of-type:shadow-[0px_98px_18px_-6px_rgba(0,0,0,0.5)] group-hover:last-of-type:shadow-[0px_0px_18px_-6px_rgba(0,0,0,0.4)]"
-          :style="{
-            transform: `rotate(${index * slicedeg}deg) skewY(${
-              slicedeg + 90
-            }deg)`,
-          }"
-          @click="clickCorrect()"
-          @mouseenter="clickCorrect()"
-          @mouseleave="reset()"
+    <svg viewBox="0 0 20 20">
+      <defs>
+        <linearGradient
+          :id="unique('color-1')"
+          y1="0%"
+          x1="0%"
+          x2="100%"
+          y2="0%"
         >
-          <!-- <div class="slice" /> -->
-        </li>
-        <!-- <li>
-          <div class="slice"></div>
-        </li> -->
-      </ul>
-    </div>
+          <stop offset="0%" stop-color="white" />
+          <stop offset="22%" stop-color="red" />
+          <stop offset="100%" stop-color="white" />
+        </linearGradient>
+        <linearGradient :id="unique('color-2')" y2="20">
+          <stop offset="0%" stop-color="#F0E5BF" />
+          <stop offset="100%" stop-color="#BEAD76" />
+        </linearGradient>
+        <filter id="shadow">
+          <feDropShadow
+            dx="0"
+            dy="0.2"
+            stdDeviation="1.8"
+            flood-opacity=".18"
+            flood-color="#796628"
+          />
+        </filter>
+      </defs>
+      <mask :id="unique('clip')">
+        <circle r="8" cx="10" cy="10" fill="#fff" />
+      </mask>
+      <foreignObject
+        x="0"
+        y="0"
+        width="20"
+        height="20"
+        :mask="`url(#${unique('clip')})`"
+      >
+        <div class="circle" />
+      </foreignObject>
+      <mask
+        v-for="(data, index) in chartData"
+        :id="unique(`datapoint-${index}`)"
+        :key="index"
+      >
+        <circle
+          r="5"
+          cx="10"
+          cy="10"
+          fill="transparent"
+          stroke="white"
+          stroke-width="10"
+          :stroke-dasharray="`calc(${data.value} * 31.42 / 100) 31.42`"
+          :transform="`rotate(${data.rotate})`"
+          transform-origin="center"
+        />
+      </mask>
+      <g v-for="(data, index) in chartData" :key="index" filter="url(#shadow)">
+        <foreignObject
+          x="0"
+          y="0"
+          width="20"
+          height="20"
+          :mask="`url(#${unique(`datapoint-${index}`)})`"
+        >
+          <div
+            class="h-full shadow-md"
+            :style="`background: ${data.background};`"
+          />
+        </foreignObject>
+      </g>
+    </svg>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    result: {
-      type: Number,
-      default: 0,
-    },
+  components: {},
 
-    amountQuestions: {
-      type: Number,
-      default: 0,
+  props: {
+    values: {
+      type: Array,
+      required: true,
     },
   },
 
   data() {
     return {
-      showResult: false,
-      showCorrect: false,
+      colors: ['#EBDFB7', '#F1EFEA', '#FFFFFF'],
+      gradients: [
+        'linear-gradient(180deg, #FFFFFF 0%, #EBE7D3 22%, #FFFFFF 100%)',
+        'linear-gradient(180deg, #F0E5BF 0%, #BEAD76 100%)',
+      ],
     }
   },
 
   computed: {
-    questions() {
-      return this.amountQuestions * 2
+    sortedValues() {
+      return [...this.values].sort((a, b) => {
+        return a - b
+      })
     },
 
-    questionsCorect() {
-      return this.result * 2
-    },
+    chartData() {
+      let offset = 0
 
-    slicedeg() {
-      return 360 / this.questions
+      return this.sortedValues
+        .slice(0, -1)
+        .map((value, index) => {
+          const valueOffset = (value * 360) / 100
+          const rotate = -90 - offset - valueOffset
+
+          offset += valueOffset
+          return {
+            value,
+            rotate,
+          }
+        })
+        .reverse()
+        .map((item, index) => {
+          return {
+            ...item,
+            background: this.gradients[index % this.gradients.length],
+          }
+        })
+        .reverse()
     },
   },
 
   methods: {
-    clickResult() {
-      this.showResult = !this.showResult
-      this.showCorrect = false
-    },
-
-    reset() {
-      this.showCorrect = false
-      this.showResult = false
-    },
-
-    clickCorrect() {
-      this.showResult = false
-      this.showCorrect = !this.showCorrect
-    },
-
-    round(num) {
-      return Math.round(num * 100) / 100
+    unique(string) {
+      return `${string}-${this._uid}`
     },
   },
 }
 </script>
 
 <style scoped>
-.gradient {
-  background: transparent
-    conic-gradient(
-      from 0deg at 50% 50%,
-      #ede9db 0%,
-      #e9e2cb 18.23%,
-      #f0e8cb 33%,
-      #d5c283 56.65%,
-      #d5c283 74.38%,
-      #e5d087 84.73%,
-      #ebdfb7 100%
-    )
-    0% 0% no-repeat padding-box;
+.circle {
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #ede9db 0%,
+    #e9e2cb 18.23%,
+    #f0e8cb 33%,
+    #d5c283 60.59%,
+    #cbb260 81.28%,
+    #e5d087 88.67%,
+    #ebdfb7 100%
+  );
+
+  @apply h-full;
 }
-</style>
-
-<style lang="scss">
-// 360/5=72 -> rotate
-// rotate+90=162 -> skewY
-
-.sliceWrapper {
-  position: relative;
-  padding: 0;
-  width: 22rem;
-  transform: rotate(315deg);
-  height: 22rem;
-  border-radius: 50%;
-  list-style: none;
-  overflow: hidden;
-}
-
-.slice {
-  position: absolute;
-  left: -100%;
-  width: 200%;
-  height: 200%;
-}
-
-li {
-  overflow: hidden;
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  transform-origin: 0% 100%;
-  border: 1px #eeead9 solid;
-  background: #eeead9;
-}
-
-// @for $i from 1 through 25 {
-//   li:nth-child(#{$i}) {
-//     transform: rotate(calc((#{$i}-1) * var(--slice-deg) + 0deg))
-//       skewY(calc(var(--slice-deg) + 90deg));
-//   }
-// }
-
-// @for $i from 1 through $questionsCorect {
-//   li:nth-child(#{$i}) {
-//     background: #EEEAD9;
-//     border: 1px #EEEAD9 solid;
-//   }
-// }
 </style>
