@@ -28,4 +28,9 @@
 .screen-outiline {
 box-shadow: inset 0px 0px 0px 4px rgb(235 223 183);
 }
+@media (min-width: 640px) {
+  .screen-outiline {
+  box-shadow: none;
+  } 
+  }
 </style>
