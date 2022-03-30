@@ -1,5 +1,5 @@
 <template>
-  <div class="flex  flex-col justify-center overflow-hidden">
+  <div class="flex  flex-col justify-center overflow-hidden h-full">
     <!-- TITLE & TEXT -->
     <div class="mb-14 px-9 sm:pl-28 sm:pr-40">
       <h1

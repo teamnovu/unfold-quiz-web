@@ -21,8 +21,8 @@ export default {
       { rel: 'stylesheet', href: 'https://use.typekit.net/kjp6bci.css' },
     ],
   },
-  server: {
-    host: '0' // default: localhost
+  loading: {
+    color: '#D5C283',
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/scss/app.scss'],
