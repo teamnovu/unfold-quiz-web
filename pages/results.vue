@@ -47,7 +47,7 @@
                   <div>of</div>
                   <div>{{ result.total }}</div>
                 </div>
-                <div>{{ result.time_field }}</div>
+                <div>{{ result.completed_at }}</div>
               </div>
             </div>
           </div>
