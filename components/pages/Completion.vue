@@ -21,7 +21,7 @@
           </p>
         </div>
         <!-- AGAIN Mobile-->
-        <NextButton @click.native="$store.commit('SET_INDEX', 0)" class="sm:hidden ml-0 pl-0 mt-7"
+        <NextButton @click.native="$store.commit('SET_INDEX', 0)" class="sm:hidden ml-0 pl-0 mt-7 !text-lg"
           >Neues Quiz starten</NextButton
         >
 
@@ -56,7 +56,7 @@
           class="typo-400 w-full sm:w-min mt-16 -ml-3 flex justify-center cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light focus-visible:ring"
           @click="scrollToSolutions($event)"
         >
-          <p class="whitespace-nowrap">Lösungen anzeigen</p>
+          <p class="whitespace-nowrap text-lg">Lösungen anzeigen</p>
           <ArrowIcon class="w-6 rotate-90 transform text-custom-gold-light" />
         </button>
 
