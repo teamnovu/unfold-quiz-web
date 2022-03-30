@@ -1,8 +1,8 @@
 <template>
-  <Container class="flex min-h-screen flex-col justify-between pt-32 sm:pl-24 sm:pr-32 sm:pt-40 sm:pb-22 md:pl-28 md:pr-40 md:pt-56 md:pb-28">
+  <Container class="flex min-h-screen flex-col justify-between ">
     <div class="flex flex-col justify-between min-h-[calc(100vh-10rem)] sm:min-h-[calc(100vh-16rem)]">
       <div class="md:grid md:grid-cols-3 ">
-        <div class="col-span-2">
+        <div class="col-span-2 pr-2">
           <h3
             class="mb-7 text-xl font-bold text-custom-gold-light sm:mb-20 sm:text-3xl"
           >
@@ -30,7 +30,7 @@
             class="w-full"
           >
             <CircleGraph
-            class="w-[120%] sm:w-full"
+            class="w-[110%] sm:w-full"
               :values="values"
               @hover-leave="mouseleave()"
               @hover-over-circle="hoverOverCircle()"
@@ -50,10 +50,10 @@
       </div>
 
       <!-- FOOTER BUTTONS -->
-      <div class="sm:flex w-full justify-between">
+      <div class="sm:flex w-full justify-between mt-4">
         <!-- SHOW SOLUTIONS -->
         <button
-          class="typo-400 w-full sm:w-min mt-16 -ml-3 flex justify-center cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light focus-visible:ring"
+          class="typo-400 w-full sm:w-min mt-4 -ml-3 flex justify-center cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light focus-visible:ring"
           @click="scrollToSolutions($event)"
         >
           <p class="whitespace-nowrap text-lg">Lösungen anzeigen</p>
@@ -61,7 +61,7 @@
         </button>
 
         <!-- AGAIN DESKTOP-->
-        <NextButton @click.native="$store.commit('SET_INDEX', 0)" class="hidden sm:flex "
+        <NextButton @click.native="$store.commit('SET_INDEX', 0)" class="hidden sm:flex !mt-0"
           >Neues Quiz starten</NextButton
         >
       </div>
