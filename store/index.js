@@ -32,7 +32,6 @@ export const actions = {
 
     const payload = {
       user: state.user,
-      solutions: rootGetters['solutions/solutions'],
       points: rootGetters['solutions/result'],
       total: getters.questions.length,
       mandelbaerli_score_achieved: state.mandelbaerliScoreAchieved,
