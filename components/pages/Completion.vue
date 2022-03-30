@@ -1,5 +1,5 @@
 <template>
-  <Container class="flex min-h-screen flex-col justify-between">
+  <Container class="flex flex-col justify-between">
     <div
       class="flex min-h-[calc(100vh-10rem)] flex-col justify-between sm:min-h-[calc(100vh-16rem)]"
     >

@@ -1,5 +1,5 @@
 <template>
-  <Container class="flex min-h-screen flex-col justify-between">
+  <Container class="flex flex-col justify-between">
     <!-- QUESTION -->
     <div class="space-y-14">
       <!-- TITLE -->

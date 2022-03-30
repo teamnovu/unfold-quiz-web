@@ -2,13 +2,12 @@ html {
     font-size: clamp(16px, 1vw, 26px);
     @apply overflow-x-hidden overflow-y-auto w-full;
     body {
-        @apply min-h-screen bg-black antialiased w-full text-white font-sans ;
+        @apply bg-black antialiased w-full text-white font-sans ;
     }
 }
 
 
 body {
-    min-height: 100vh;
     /* mobile viewport bug fix */
     min-height: -webkit-fill-available;
   }
@@ -17,7 +16,7 @@ body {
     height: -webkit-fill-available;
   }
 
-  
+
 /* FOCUS STYLES */
 button,
 a {

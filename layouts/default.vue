@@ -1,5 +1,6 @@
 <template>
-  <div class="screen-outiline relative min-h-screen">
+ <Vue100vh :css="{minHeight: '100rvh'}">
+  <div class="screen-outiline relative h-min bg-red-600">
     <!-- HEADER -->
     <div
       class="absolute inset-x-9 top-9 z-40 flex items-center justify-between sm:left-28 sm:right-40 sm:top-20"
@@ -21,6 +22,7 @@
       class="pointer-events-none fixed inset-0 border-0 border-custom-gold-light sm:border-6"
     />
   </div>
+   </Vue100vh>
 </template>
 
 <style scoped>

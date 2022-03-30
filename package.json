@@ -18,6 +18,7 @@
     "lottie-web": "^5.8.1",
     "nuxt": "^2.15.8",
     "vee-validate": "^3.4.10",
+    "vue-100vh": "^0.1.1",
     "vue-confetti": "^2.3.0",
     "vuex-persistedstate": "^4.1.0"
   },

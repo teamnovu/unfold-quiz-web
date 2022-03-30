@@ -10,7 +10,7 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1,  minimal-ui' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
@@ -21,7 +21,9 @@ export default {
       { rel: 'stylesheet', href: 'https://use.typekit.net/kjp6bci.css' },
     ],
   },
-
+  server: {
+    host: '0' // default: localhost
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/scss/app.scss'],
 
@@ -50,7 +52,6 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
     '@nuxt/postcss8',
     '@nuxtjs/pwa',
   ],
@@ -94,7 +95,7 @@ export default {
         autoprefixer: {},
       },
     },
-    transpile: ['vee-validate/dist/rules'],
+    transpile: ['vee-validate/dist/rules', 'vue-100vh'],
   },
   env: {
     appUrl: process.env.APP_URL || 'http://localhost:3000',
