@@ -52,6 +52,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxt/postcss8',
+    '@nuxtjs/pwa',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -69,6 +70,20 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: process.env.API_URL,
+  },
+  // pwa https://pwa.nuxtjs.org/setup
+  pwa: {
+    manifest: {
+      name: 'novu Quiz',
+      short_name: 'novu unfold Quiz',
+      lang: 'de',
+      description: `Das Quiz für den unfold Event!`,
+      useWebmanifestExtension: true,
+    },
+    icon: false,
+    meta: {
+      theme_color: '#000000',
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
