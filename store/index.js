@@ -37,8 +37,6 @@ export const actions = {
       mandelbaerli_score_achieved: state.mandelbaerliScoreAchieved,
     }
 
-    console.log(payload)
-
     const history = JSON.parse(localStorage.getItem('history')) || []
     const historyItem = {
       user: payload.user.email,
