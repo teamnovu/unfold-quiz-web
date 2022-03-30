@@ -10,7 +10,7 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1,  minimal-ui' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1,  minimal-ui, user-scalable=no"' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
@@ -80,6 +80,8 @@ export default {
       lang: 'de',
       description: `Das Quiz für den unfold Event!`,
       useWebmanifestExtension: true,
+      orientation: "landscape",
+
     },
     icon: false,
     meta: {
