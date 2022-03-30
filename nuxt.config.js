@@ -4,7 +4,7 @@ export default {
   ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Unfold Quiz | Novu',
+    title: 'Unfold Quiz | novu',
     htmlAttrs: {
       lang: 'de',
     },
