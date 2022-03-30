@@ -3,7 +3,7 @@
     <!-- TITLE & TEXT -->
     <div class="mb-14 px-9 sm:pl-28 sm:pr-40">
       <h1
-        class="mb-28 text-xl font-bold text-custom-gold-light sm:mb-10 sm:text-3xl lg:text-4xl"
+        class="mb-24 text-xl font-bold text-custom-gold-light sm:mb-10 sm:text-3xl lg:text-4xl"
       >
         novu Quiz
       </h1>
@@ -11,7 +11,7 @@
         class="col-span-1 mb-20 grid gap-5 sm:gap-10 lg:grid-cols-3 lg:gap-36"
       >
         <div class="lg:col-span-2">
-          <h2 class="typo-700 pr-[10vw]">
+          <h2 class="typo-700 pr-[6vw]">
             {{ home.main_title }}
           </h2>
         </div>
