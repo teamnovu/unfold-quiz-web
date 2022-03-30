@@ -1,5 +1,5 @@
 <template>
-  <Container class="flex h-full flex-col justify-between">
+  <Container class="flex flex-col justify-between">
     <div class="space-y-14">
       <!-- TITLE -->
       <div class="mb-16">
