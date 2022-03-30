@@ -21,8 +21,8 @@
           </p>
         </div>
         <!-- AGAIN Mobile-->
-        <NextButton @click.native="$store.commit('SET_INDEX', 0)" class="sm:hidden ml-0 pl-0 mt-7 !text-lg"
-          >Neues Quiz starten</NextButton
+        <NextButton @click.native="$store.commit('SET_INDEX', 0)" class="sm:hidden ml-0 pl-0 mt-7 "
+          ><span class="text-lg">Neues Quiz starten</span></NextButton
         >
 
         <div class="relative flex flex-row md:flex-col justify-between md:block mt-8 xs:mt-16">
