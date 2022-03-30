@@ -3,7 +3,7 @@
     <input
       v-model="innerValue"
       class="typo-400 peer block h-16 w-full translate-y-[0.625rem] rounded-full bg-transparent px-9 py-4 placeholder-transparent placeholder-shown:translate-y-0 focus:translate-y-[0.625rem] sm:h-20 sm:text-2xl"
-      type="text"
+      :type="type"
       :name="name"
       :placeholder="name"
     />
@@ -40,6 +40,11 @@ export default {
     value: {
       type: String,
       required: true,
+    },
+    type: {
+      type: String,
+      default: 'text',
+      required: false,
     },
 
     rules: {

@@ -30,6 +30,7 @@
               v-model="user.email"
               rules="required|email"
               name="E-Mail"
+              type="email"
             />
             <InputField v-model="user.company" name="Firma (optional)" />
           </form>
