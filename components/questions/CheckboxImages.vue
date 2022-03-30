@@ -47,6 +47,7 @@
         <div
           v-else
           class="relative flex h-full w-full flex-col items-center justify-between rounded-sm p-3 transition-colors md:px-9 md:pt-3 md:pb-5"
+          class="relative flex h-full w-full flex-col items-center justify-between rounded-lg p-3 transition-colors md:px-9 md:pt-3 md:pb-5"
           :class="{ 'bg-custom-gold-gradient text-black': checkbox.checked }"
         >
           <div class="aspect-square h-full w-full">
