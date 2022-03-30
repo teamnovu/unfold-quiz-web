@@ -5,7 +5,7 @@
     <img
       src="~/assets/gif/cry-baby.gif"
       alt="this slowpoke moves"
-      class="h-[80vh] rounded max-w-[100vw] object-contain"
+      class="h-[80vh] max-w-[100vw] rounded object-contain"
     />
   </div>
 </template>
