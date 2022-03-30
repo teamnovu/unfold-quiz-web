@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full">
     <transition
       :name="
         $store.getters.direction === 'prev' ? 'slideLeftIn' : 'slideRightIn'
@@ -13,6 +13,7 @@
       <div
         v-else-if="pageIndex > 0 && pageIndex < questions.length + 1"
         key="1"
+        class="h-full"
       >
         <transition
           :name="

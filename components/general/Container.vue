@@ -1,6 +1,6 @@
 <template>
   <section
-    class="px-9 pt-24 pb-8 sm:pl-28 sm:pr-40 sm:pt-40"
+    class="px-9 pt-24 pb-12 sm:pl-28 sm:pr-40 sm:pt-40"
     :class="{ '!pb-24': screenCanScroll }"
   >
     <slot />

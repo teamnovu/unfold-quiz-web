@@ -1,6 +1,6 @@
 <template>
   <QuestionContainer :data="data" @next="checkAnswer()">
-    <div class="grid grid-cols-2 gap-3 sm:gap-8 lg:grid-cols-4">
+    <div class="grid grid-cols-2 gap-3 sm:gap-8 lg:grid-cols-3 xl:grid-cols-4">
       <button
         v-for="(checkbox, index) in checkboxes"
         :key="index"
@@ -46,7 +46,6 @@
         <!-- ILLUSTRATION -->
         <div
           v-else
-          class="relative flex h-full w-full flex-col items-center justify-between rounded-sm p-3 transition-colors md:px-9 md:pt-3 md:pb-5"
           class="relative flex h-full w-full flex-col items-center justify-between rounded-lg p-3 transition-colors md:px-9 md:pt-3 md:pb-5"
           :class="{ 'bg-custom-gold-gradient text-black': checkbox.checked }"
         >
