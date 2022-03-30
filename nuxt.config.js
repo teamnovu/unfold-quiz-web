@@ -81,6 +81,7 @@ export default {
       description: `Das Quiz für den unfold Event!`,
       useWebmanifestExtension: true,
       orientation: "landscape",
+      start_url: "/?pwa",
 
     },
     icon: false,
