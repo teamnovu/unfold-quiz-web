@@ -136,16 +136,17 @@ export default {
   },
 
   async mounted() {
-    this.$store.dispatch('saveResult')
-    await this.$nextTick()
-    if (this.checkIfCrying()) {
-      this.startCrying()
-    }
     if (this.$store.getters.minPointsForMandelbaerli <= this.percentCorrect) {
       this.startConfetti()
       this.$store.commit('SET_MANDELBAERLI_SCORE_ACHIEVED', true)
     } else {
       this.$store.commit('SET_MANDELBAERLI_SCORE_ACHIEVED', false)
+    }
+
+    this.$store.dispatch('saveResult')
+    await this.$nextTick()
+    if (this.checkIfCrying()) {
+      this.startCrying()
     }
   },
 
