@@ -1,42 +1,43 @@
 export default {
-
-  head () {
+  head() {
     const page = this.$store.getters.page
-    if (!page) { return }
+    if (!page) {
+      return
+    }
 
     const head = {
       meta: [
         {
           property: 'og:url',
-          content: process.env.appUrl + page.url
+          content: process.env.appUrl + page.url,
         },
         {
           property: 'og:type',
-          content: 'website'
+          content: 'website',
         },
         {
           property: 'og:image',
-          content: this.pageImage(page).permalink
+          content: this.pageImage(page).permalink,
         },
         {
           property: 'og:image:alt',
           hid: 'og:image:alt',
-          content: this.pageImage(page).alt
-        }
+          content: this.pageImage(page).alt,
+        },
       ],
 
       link: [
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: process.env.baseUrl + page.url
-        }
-      ]
+          href: process.env.baseUrl + page.url,
+        },
+      ],
     }
 
     head.meta.push({
       name: 'twitter:card',
-      content: 'summary'
+      content: 'summary',
     })
 
     if (page.seo_hidden) {
@@ -48,11 +49,11 @@ export default {
       head.meta.push({
         hid: 'title',
         name: 'title',
-        content: page.seo_title || page.title
+        content: page.seo_title || page.title,
       })
       head.meta.push({
         property: 'og:title',
-        content: page.seo_title || page.title
+        content: page.seo_title || page.title,
       })
     }
 
@@ -61,11 +62,11 @@ export default {
       head.meta.push({
         hid: 'description',
         name: 'description',
-        content: page.seo_description || page.description
+        content: page.seo_description || page.description,
       })
       head.meta.push({
         property: 'og:description',
-        content: page.seo_description || page.description
+        content: page.seo_description || page.description,
       })
     }
 
@@ -73,16 +74,16 @@ export default {
   },
 
   methods: {
-    pageImage (page) {
+    pageImage(page) {
       // seo image
       if (page.seo_image) {
         return page.seo_image
       } else {
         return {
           permalink: undefined,
-          alt: undefined
+          alt: undefined,
         }
       }
-    }
-  }
+    },
+  },
 }

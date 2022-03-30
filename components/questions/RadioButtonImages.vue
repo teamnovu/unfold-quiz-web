@@ -14,7 +14,7 @@
               radioButton.checked && data.is_illustration,
           },
         ]"
-        class="group  bg-custom-gray-darkest transition-all hover:bg-custom-gray-darker"
+        class="group bg-custom-gray-darkest transition-all hover:bg-custom-gray-darker"
         @click="onInput(index)"
       >
         <!-- NORMAL IMAGE -->

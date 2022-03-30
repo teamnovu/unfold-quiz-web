@@ -1,6 +1,6 @@
 <template>
   <section
-    class="px-9 pt-24 sm:pl-28 sm:pr-40 sm:pt-40 pb-8"
+    class="px-9 pt-24 pb-8 sm:pl-28 sm:pr-40 sm:pt-40"
     :class="{ '!pb-24': screenCanScroll }"
   >
     <slot />
@@ -12,30 +12,30 @@ export default {
   data() {
     return {
       screenCanScroll: false,
-    };
+    }
   },
 
   destroyed() {
-    window.removeEventListener("resize", this.handleResize);
+    window.removeEventListener('resize', this.handleResize)
   },
+
   mounted() {
-    if (process.client) {
-      setTimeout(() => {
-        this.handleResize();
-      }, 500);
-      //Why this next tick thing dont work brrr :(
-      // this.$nextTick(() => {
-      //   this.handleResize();
-      // });
-    }
-    window.addEventListener("resize", this.handleResize);
+    setTimeout(() => {
+      this.handleResize()
+    }, 500)
+    // Why this next tick thing dont work brrr :(
+    // this.$nextTick(() => {
+    //   this.handleResize();
+    // });
+    window.addEventListener('resize', this.handleResize)
   },
+
   methods: {
     handleResize() {
-      this.screenCanScroll = document.body.clientHeight > screen.height;
+      this.screenCanScroll = document.body.clientHeight > screen.height
     },
   },
-};
+}
 </script>
 
 <style scoped>

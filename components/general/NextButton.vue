@@ -5,7 +5,7 @@
     @mouseleave="hover = false"
   >
     <span
-      class="typo-400  text-custom-gold-light transition-colors ease-in-out group-hover:text-custom-gold"
+      class="typo-400 text-custom-gold-light transition-colors ease-in-out group-hover:text-custom-gold"
     >
       <slot />
     </span>
