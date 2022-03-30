@@ -1,6 +1,6 @@
 <template>
   <button
-    class="group mt-16 flex items-center space-x-5 rounded-full p-1 pl-3 lg:justify-end"
+    class="group mt-14 flex items-center space-x-5 rounded-full p-1 pl-3 lg:justify-end"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >

@@ -2,7 +2,7 @@
   <div class="screen-outiline relative min-h-screen">
     <!-- HEADER -->
     <div
-      class="absolute inset-x-9 top-9 z-40 flex items-center justify-between sm:left-28 sm:right-40 sm:top-24"
+      class="absolute inset-x-9 top-9 z-40 flex items-center justify-between sm:left-28 sm:right-40 sm:top-20"
     >
       <!-- LOGO -->
       <Logo />
