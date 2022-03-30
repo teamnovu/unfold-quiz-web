@@ -15,11 +15,12 @@
             v-if="percentCorrect >= $store.getters.minPointsForMandelbaerli"
             class="typo-400 mt-5 max-w-xl sm:mt-14"
           >
-            {{
-              $store.getters.mandelbaerliReceived
-                ? completion.no_mandelbaerli_text
-                : completion.mandelbaerli_text
-            }}
+            <template v-if="$store.getters.mandelbaerliReceived === true">
+              {{ completion.no_mandelbaerli_text }}</template
+            >
+            <template v-if="$store.getters.mandelbaerliReceived === false">
+              {{ completion.mandelbaerli_text }}</template
+            >
           </p>
         </div>
         <!-- AGAIN Mobile -->
@@ -142,6 +143,9 @@ export default {
     }
     if (this.$store.getters.minPointsForMandelbaerli <= this.percentCorrect) {
       this.startConfetti()
+      this.$store.commit('SET_MANDELBAERLI_SCORE_ACHIEVED', true)
+    } else {
+      this.$store.commit('SET_MANDELBAERLI_SCORE_ACHIEVED', false)
     }
   },
 

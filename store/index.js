@@ -10,7 +10,8 @@ export const state = () => ({
     newsletter: false,
   },
   isSaved: localStorage.getItem('isSaved'),
-  mandelbaerliReceived: false,
+  mandelbaerliScoreAchieved: false,
+  mandelbaerliReceived: null,
 })
 
 export const actions = {
@@ -25,10 +26,7 @@ export const actions = {
     commit('SET_PAGE', page?.data)
   },
 
-  async saveResult(
-    { state, getters, rootGetters, commit },
-    mandelbaerliReceived
-  ) {
+  async saveResult({ state, getters, rootGetters, commit }) {
     if (state.isSaved) return
 
     const payload = {
@@ -36,8 +34,10 @@ export const actions = {
       solutions: rootGetters['solutions/solutions'],
       points: rootGetters['solutions/result'],
       total: getters.questions.length,
-      mandelbaerliReceived,
+      mandelbaerli_score_achieved: state.mandelbaerliScoreAchieved,
     }
+
+    console.log(payload)
 
     const history = JSON.parse(localStorage.getItem('history')) || []
     const historyItem = {
@@ -55,7 +55,7 @@ export const actions = {
       return
     }
 
-    commit('SET_MANDELBAERLI_RECEIVED', response)
+    commit('SET_MANDELBAERLI_RECEIVED', response.mandelbaerli_received)
     commit('SET_SAVED', true)
   },
 
@@ -94,6 +94,10 @@ export const mutations = {
 
   SET_MANDELBAERLI_RECEIVED(state, bool) {
     state.mandelbaerliReceived = bool
+  },
+
+  SET_MANDELBAERLI_SCORE_ACHIEVED(state, bool) {
+    state.mandelbaerliScoreAchieved = bool
   },
 
   RESET(state) {
