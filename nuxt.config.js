@@ -79,8 +79,8 @@ export default {
   // pwa https://pwa.nuxtjs.org/setup
   pwa: {
     manifest: {
-      name: 'novu Quiz',
-      short_name: 'novu unfold Quiz',
+      name: 'novu Unfold Quiz',
+      short_name: 'novu Quiz',
       lang: 'de',
       description: `Das Quiz für den unfold Event!`,
       useWebmanifestExtension: true,
