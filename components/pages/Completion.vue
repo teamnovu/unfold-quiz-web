@@ -1,6 +1,6 @@
 <template>
-  <Container class="flex min-h-screen flex-col justify-between">
-    <div class="flex flex-col justify-between sm:min-h-[calc(100vh-14rem)]">
+  <Container class="flex min-h-screen flex-col justify-between pt-32 sm:pl-24 sm:pr-32 sm:pt-40 sm:pb-22 md:pl-28 md:pr-40 md:pt-56 md:pb-28">
+    <div class="flex flex-col justify-between min-h-[calc(100vh-10rem)] sm:min-h-[calc(100vh-16rem)]">
       <div class="md:grid md:grid-cols-3 ">
         <div class="col-span-2">
           <h3
@@ -9,9 +9,9 @@
             {{ result }} Punkt{{ result === 1 ? '' : 'e' }}!
           </h3>
           <h1 class="typo-600 max-w-xl" v-html="completionFeedback.feedback" />
-          <p
-            v-if="result >= $store.getters.minPointsForMandelbaerli"
-            class="typo-400 mt-14 max-w-xl"
+          <p       
+          v-if="percentCorrect >= $store.getters.minPointsForMandelbaerli"
+            class="typo-400 mt-5 sm:mt-14 max-w-xl"
           >
             {{
               $store.getters.mandelbaerliReceived
@@ -20,11 +20,17 @@
             }}
           </p>
         </div>
-        <div class="relative  flex flex-row md:flex-col justify-between md:block">
+        <!-- AGAIN Mobile-->
+        <NextButton @click.native="$store.commit('SET_INDEX', 0)" class="sm:hidden ml-0 pl-0 mt-7"
+          >Neues Quiz starten</NextButton
+        >
+
+        <div class="relative flex flex-row md:flex-col justify-between md:block mt-8 xs:mt-16">
           <div
-            class=" w-full  mt-11"
+            class="w-full"
           >
             <CircleGraph
+            class="w-[120%] sm:w-full"
               :values="values"
               @hover-leave="mouseleave()"
               @hover-over-circle="hoverOverCircle()"
@@ -32,7 +38,7 @@
             />
           </div>
           <div
-            class="text-2xl text-3xl flex w-full flex-row items-center justify-center text-center text-gold-600 "
+            class="text-xl md:text-3xl flex w-full flex-row items-center justify-center text-center text-gold-600 sm:mt-6"
           >
             {{
               showHoverText
@@ -44,18 +50,18 @@
       </div>
 
       <!-- FOOTER BUTTONS -->
-      <div class="mb-20 flex w-full justify-between">
+      <div class="sm:flex w-full justify-between">
         <!-- SHOW SOLUTIONS -->
         <button
-          class="typo-400 mt-16 -ml-3 flex w-min cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light focus-visible:ring"
+          class="typo-400 w-full sm:w-min mt-16 -ml-3 flex justify-center cursor-pointer items-center space-x-2 rounded p-3 text-custom-gold-light outline-none ring-custom-gold-light focus-visible:ring"
           @click="scrollToSolutions($event)"
         >
           <p class="whitespace-nowrap">Lösungen anzeigen</p>
           <ArrowIcon class="w-6 rotate-90 transform text-custom-gold-light" />
         </button>
 
-        <!-- AGAIN -->
-        <NextButton @click.native="$store.commit('SET_INDEX', 0)"
+        <!-- AGAIN DESKTOP-->
+        <NextButton @click.native="$store.commit('SET_INDEX', 0)" class="hidden sm:flex "
           >Neues Quiz starten</NextButton
         >
       </div>
