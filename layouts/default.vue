@@ -9,7 +9,7 @@
       <Logo />
       <transition name="slideRightInRightOut">
         <BackButton
-          v-if="$store.getters.index > 1"
+          v-if="$store.getters.index > 1 && $store.getters.index != (this.$store.getters.questions.length + 2)"
           @click.native="$store.commit('SET_INDEX', $store.getters.index - 1)"
           >Zurück</BackButton
         >
