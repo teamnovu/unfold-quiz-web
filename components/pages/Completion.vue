@@ -57,7 +57,10 @@
           @click="scrollToSolutions($event)"
         >
           <p class="whitespace-nowrap text-lg">Lösungen anzeigen</p>
-          <ArrowIcon class="w-6 rotate-90 transform text-custom-gold-light" />
+          <span class="animateArrow">
+
+          <ArrowIcon class="w-6 rotate-90 transform text-custom-gold-light " />
+          </span>
         </button>
 
         <!-- AGAIN DESKTOP-->
@@ -200,3 +203,21 @@ export default {
   },
 }
 </script>
+<style scoped>
+
+.animateArrow {
+  animation: animateArrow 3s infinite linear;
+}
+@keyframes animateArrow {
+  0%, 100% {
+    transform: translateY(5px)
+    }
+  25%, 75% {
+    transform: translateY(-5px)
+    }
+    35% {
+      transform: translateY(-1px)
+
+    }
+}
+</style>
