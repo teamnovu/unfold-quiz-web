@@ -12,6 +12,7 @@ export const state = () => ({
   isSaved: localStorage.getItem('isSaved'),
   mandelbaerliScoreAchieved: false,
   mandelbaerliReceived: null,
+  isKiosk: false,
 })
 
 export const actions = {
@@ -100,6 +101,10 @@ export const mutations = {
     state.mandelbaerliScoreAchieved = bool
   },
 
+  SET_KIOSK(state, isKiosk) {
+    state.isKiosk = isKiosk
+  },
+
   RESET(state) {
     state.isSaved = false
     state.user = {
@@ -110,7 +115,10 @@ export const mutations = {
       newsletter: false,
     }
     localStorage.removeItem('isSaved')
-    localStorage.removeItem('user')
+
+    if (state.isKiosk) {
+      localStorage.removeItem('user')
+    }
   },
 }
 

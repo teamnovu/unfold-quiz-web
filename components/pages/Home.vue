@@ -55,6 +55,8 @@ export default {
   },
 
   mounted() {
+    const isKiosk = this.$route.query.kiosk !== undefined
+    this.$store.commit('SET_KIOSK', isKiosk)
     this.$store.dispatch('reset')
   },
 }
