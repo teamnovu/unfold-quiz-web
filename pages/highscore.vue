@@ -3,7 +3,7 @@
     <!-- HIGHSCORE -->
     <div class="relative flex aspect-square items-center justify-center">
       <transition name="grow" mode="out-in">
-        <h1 :key="maxScore" class="m-20 text-[12rem] font-bold text-gold-700">
+        <h1 :key="maxScore" class="m-20 text-[12rem] font-bold text-gold-600">
           {{ maxScore }}
         </h1>
       </transition>
@@ -14,7 +14,7 @@
 
     <!-- AMOUNT -->
     <div
-      class="mt-36 flex flex-col items-center text-5xl font-bold uppercase tracking-widest text-gold-600"
+      class="mt-36 flex flex-col items-center text-5xl font-bold uppercase tracking-widest text-gold-700"
     >
       AKTUELLER HIGHSCORE
     </div>
