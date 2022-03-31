@@ -1,15 +1,18 @@
 <template>
   <div class="relative flex h-screen flex-col items-center justify-center">
-    <div
-      class="flex aspect-square animate-pulse items-center justify-center rounded-full border-4 border-gold-700 p-20"
-    >
-      <transition name="fade">
-        <h1 :key="maxScore" class="text-[12rem] font-bold text-gold-700">
+    <!-- HIGHSCORE -->
+    <div class="relative flex aspect-square items-center justify-center">
+      <transition name="grow" mode="out-in">
+        <h1 :key="maxScore" class="m-20 text-[12rem] font-bold text-gold-700">
           {{ maxScore }}
         </h1>
       </transition>
+      <div
+        class="bo insert-0 absolute h-full w-full animate-pulse rounded-full border-4 border-gold-700"
+      />
     </div>
 
+    <!-- AMOUNT -->
     <div class="mt-36 flex flex-col items-center text-3xl text-gold-600">
       <span class="text-4xl font-bold">{{ usersWithMaxScore }}</span>
       <span>Bewerber für den Hauptpreis</span>
