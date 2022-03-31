@@ -13,9 +13,10 @@
     </div>
 
     <!-- AMOUNT -->
-    <div class="mt-36 flex flex-col items-center text-3xl text-gold-600">
-      <span class="text-4xl font-bold">{{ usersWithMaxScore }}</span>
-      <span>Bewerber für den Hauptpreis</span>
+    <div
+      class="mt-36 flex flex-col items-center text-5xl font-bold uppercase tracking-widest text-gold-600"
+    >
+      AKTUELLER HIGHSCORE
     </div>
   </div>
 </template>
